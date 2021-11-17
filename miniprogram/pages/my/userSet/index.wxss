@@ -1,0 +1,223 @@
+/* miniprogram/pages/my/userSet/index.wxss */
+page{
+  background-color: #F6F2EF;
+}
+.headPortrait,.user_message{
+  background-color: #ffffff;
+}
+.user_message .particulars_lists{
+  border-color: #EFEFEF;
+  padding: 30rpx 20rpx;
+}
+.user_message .particulars_lists view{
+  font-size: 30rpx;
+}
+.user_message .particulars_lists view:nth-child(2){
+  color:#A2A5B9;
+}
+.user_message .particulars_lists view .iconfont{
+  display: inline-block;
+  transform: translateY(2px);
+}
+.headPortrait .particulars_lists{
+  display: flex;
+  align-items: center;
+}
+.headPortrait .particulars_lists .userImg{
+  width: 60px;
+  height: 60px;
+  border-radius: 60px;
+  overflow: hidden;
+  border: 1px solid #D1D1D1;
+  margin-right:10px;
+}
+.headPortrait .particulars_lists view:nth-child(1){
+  width: 100%;
+  float: left;
+  font-size:28rpx;
+}
+.headPortrait .particulars_lists view:nth-child(2){
+  display: flex;
+  align-items: center;
+  width: 40%;
+  float: left;
+}
+.backLogin{
+  width:100%;
+  height:50px;
+  text-align:center;
+  line-height:50px;
+  background-color: #ffffff;
+  font-size:14px;
+}
+.select_box .title{
+  width: 100%;
+  text-align: center;
+}
+.select_box .Inp{
+  width: 100%;
+  padding: 10px 0;
+  position: relative;
+}
+.select_box .Inp input{
+  color: #000000;
+}
+/* inplact */
+.select_box .homeLocation{
+  width: 100px;
+  height: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #ffffff;
+  border:1px solid #CFCFCF;
+  position:absolute;
+  top: 70px;
+  left: 30px;
+  z-index: 999999;
+}
+.select_box .Inp view{
+  width: 20%;
+  text-align: center;
+  font-size: 26rpx;
+  transform: translateY(2px);
+}
+.select_box .Inp view .iconfont{
+  color: #CFCDCE;
+}
+.select_box .Inp input{
+  width: 60%;
+}
+.select_box .verify{
+  color:#0E98FF;
+}
+
+.select_box .cut-off_rule{
+  background-color: #ffffff;
+}
+.inplact{
+  font-size: 12px;
+}
+.wait{
+  color: #CFCFCF;
+}
+.particulars_lists{
+  color: #000000;
+}
+radio .wx-radio-input {
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 30rpx;
+  border:2rpx solid #0092FF;
+  margin-left:10rpx;
+}
+.head{
+  width: 100%;
+  padding-top:40rpx;
+}
+.head .head_box{
+  width: 140rpx;
+  margin: 0 auto;
+}
+.head .head_box .head_box_img{
+  width: 100%;
+  height: 140rpx;
+  border-radius: 140rpx;
+  overflow: hidden;
+  background-color: #F6F2EF;
+}
+.head .head_box .head_box_name{
+  width: 100%;
+  text-align: center;
+  color: #8B8B8B;
+  margin-top:20rpx;
+  font-size:32rpx;
+}
+.myData{
+	width: 95%;
+	background-color: #FFFFFF;
+	/* overflow: ; */
+	border-radius: 20rpx;
+	margin: 0 auto;
+	margin-top: 20rpx;
+}
+.myData .myData_item:nth-of-type(1){
+	padding: 10rpx 10rpx 0rpx 0rpx;
+}
+.myData .myData_item{
+	width: 95%;
+	box-sizing: border-box;
+	padding: 10rpx 10rpx 10rpx 0rpx;
+	font-size: 26rpx;
+	border-bottom:1px solid #DFDFDF;
+	margin-left: 36rpx;
+}
+.myData_item-bottom{
+	height: 40rpx;
+	background-image: linear-gradient(to top, #f4f4f4, #FFFFFF);
+}
+
+.myData .myData_item.border0{
+	border:0;
+}
+.myData_item_zhu .myData_item_zhu_img{
+	width: 70rpx;
+	height: 70rpx;
+	border-radius: 70rpx;
+	overflow: hidden;
+	margin-right:15rpx;
+}
+.myData_item_zhu .myData_item_zhu_img image{
+	width: 100%;
+}
+.myData_item_zhu_title .myData_item_zhu_title_name{
+	font-weight: bold;
+}
+.myData_item_zhu_title .myData_item_zhu_title_v{
+	font-size: 20rpx;
+	margin-top: 4rpx;
+	-webkit-transform-origin-x: 0;
+	-webkit-transform: scale(0.80);
+	color: #cea95b;
+}
+.myData_item_to{
+	line-height: 70rpx;
+	font-size: 28rpx;
+	display: flex;
+	align-items: center;
+	margin-right:20rpx;
+}
+.myData_item_to text:nth-of-type(1){
+	transform: translateY(-2rpx);
+}
+.myData_item_to .iconfont{
+	font-size: 44rpx;
+	
+	transform: translateX(12rpx);
+}
+.myData_item_to .toCopy{
+	font-size: 24rpx;
+	border:1px solid #b1b1b1;
+	line-height:30rpx;
+	padding: 0 8rpx;
+	border-radius:8rpx;
+	margin-left:20rpx;
+}
+.myData_item_zhu .myData_item_zhu_text{
+	line-height: 70rpx;
+}
+.myData_btn{
+	text-align: center;
+  padding: 20rpx 0 !important;
+  background-color: #ffffff;
+  color: #747171;
+  box-sizing: border-box;
+  /* border: 1px solid #747171; */
+  box-shadow: 1px 1px 5px #b9b9b9;
+  font-weight: bold;
+}
+.myData_btn .myData_item{
+  padding: 0 !important;
+}
+.texts .myData_item_zhu{
+	width: 190rpx;
+}

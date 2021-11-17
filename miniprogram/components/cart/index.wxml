@@ -1,0 +1,83 @@
+<!--miniprogram/pages/shoppingCart/index/index.wxml-->
+<view class="home-page catIndex" style='margin-top:{{height}}px;'>
+  <!-- <scroll-view bindscrolltolower="" class="btns_bottom" style="height:100%;height:{{contentHeight}}px;" scroll-y="true"> -->
+    <!-- 商品为空 -->
+    <view wx:if="{{cartList==''}}" class="empty">
+      <text class="iconfont icon-Clipped2"></text>
+      <text>购物车是空的哦</text>
+    </view>
+
+    <tui-modal show="{{tuiModalShow}}" bindtap="tuiModalBtn" button="{{tuiButton}}" content="{{tuiModalText}}"></tui-modal>
+    
+    <!-- 商品 -->
+    <!-- <view wx:if="{{cartList!=''}}" class="BarTitle clear"><text>购物车</text><text bindtap="scriptwriter">{{scriptwriterBtn==false?'编辑':'完成'}}</text></view> -->
+    <checkbox-group bindchange="checkboxChange">
+      <!-- tui-swipe-action -->
+      <view wx:for="{{cartList}}" wx:key='index' class="goods_item clear">
+        <tui-swipe-action operateWidth="{{70}}">
+          <view slot="content" class="tui-list-item">
+            <checkbox wx:if="{{scriptwriterBtn==true}}" value="{{index}}" checked="{{item.checked}}" class="floatLeft checkboxs"></checkbox>
+            <view style="width:{{windowWidth*0.26}}px;height:{{windowWidth*0.26}}px;overflow: hidden;display: inline-block;">
+              <image mode="heightFix" class="floatLeft" src="{{item.goods_image}}"></image>
+            </view>
+            <view class="floatLeft" class="goods_xiangQing">
+              <view class="goods_name" bindtap="_navto" data-url="/pages/goods/goods_particulars/index?goodsid={{item.goods_id}}">{{item.goods_name}}</view>
+              <view class="goods_styles">
+                <text class="goods_styles_biao">{{item.size_name}}</text>
+              </view>
+              <view class="goods_num clear">
+                <view>HK$<text>{{item.price}}</text></view>
+                <view>
+                  <text data-num="+" data-index="{{index}}" bindtap="addGoods" class="iconfont btnActive icon-jia"></text>
+                  <text>{{item.quantity}}</text>
+                  <text data-num="-" data-index="{{index}}" bindtap="addGoods" class="iconfont btnActive icon-jianhao {{item.quantity==1?'opacitys':''}}"></text>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="tui-custom-btn_box" slot="button">
+            <!-- <view class="tui-custom-btn tui-custom-mr" bindtap="customBtn" data-goodsIndex="{{index}}" data-index="0">
+              移至收藏
+            </view> -->
+            <view class="tui-custom-btn" bindtap="customBtn" data-goodsIndex="{{index}}" data-index="1">
+              删除
+            </view>
+          </view>
+        </tui-swipe-action>
+      </view>
+    </checkbox-group>
+    <view class="cut-off_rule"></view>
+    <!-- 推荐 -->
+    <view class="xiangXiBox">
+      <view class="xiangXiBox_title">为你推荐</view>
+      <view class="xiangXiBox_fanGe">
+        <tui-divider size="24" height="20" width="60%" gradual></tui-divider>
+      </view>
+      <view class="TuiJian clear">
+        <!--  -->
+        <view bindtap="_navto" data-url="/pages/goods/goods_particulars/index?goodsid={{item.goods_id}}" wx:for="{{recommend}}" wx:key='index'  class="goods_list_item">
+          <view class="imgs box_shadow">
+            <!-- <image data-index="{{index}}" bindload="imgInfoTJ" style="width:{{ imageSizeT[index].width }}rpx; height:{{ imageSizeT[index].height }}rpx;" src="{{item.default_image}}"></image> -->
+            <image data-index="{{index}}" src="{{item.default_image}}" mode="heightFix"></image>
+            <image src="../../images/loading/vpxyy_loading.png"></image>
+          </view>
+          <text class="item_title">{{item.goods_name}}\n</text>
+          <text>
+            <text wx:if="{{item.zhekou!=0}}">{{item.zhekou}}折,</text>
+            <text wx:if="{{item.user_price}}">HK${{item.user_price}}</text> 
+          </text>
+        </view>
+      </view>
+    </view>
+
+  <!-- </scroll-view> -->
+  <view wx:if="{{cartList!=''}}" class="close clear particulars_border-bom particulars_border-top CaoZuo" style="margin-bottom:{{toCarKey==true?'0':''}};">
+    <checkbox wx:if="{{scriptwriterBtn==true}}" bindtap="allCheckbox" checked='{{allCheckbox}}'>全选</checkbox>
+    <view class="money_num">
+      <view class="money_close">合计：<text wx:if="{{cartTotal.goodsAmount}}">HK${{cartTotal.goodsAmount}}</text></view>
+      <view class="money_balance">账户余额：<text>HK${{userCentre.data.account.amount}}</text></view>
+    </view>
+    <view bindtap="_navto" wx:if="{{scriptwriterBtn==false}}" data-url="/pages/shoppingCart/orderForm/index?payForTheOrder=true" class="carBtn btnActive">立即付款</view>
+    <view bindtap="shanCart" wx:if="{{scriptwriterBtn==true}}" class="carBtn scriptwriterdele btnActive">删除</view>
+  </view>
+</view>

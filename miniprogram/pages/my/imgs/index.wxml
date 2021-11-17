@@ -1,0 +1,15 @@
+<!--miniprogram/pages/my/imgs/index.wxml-->
+<nav-bar navbar-data='{{navbarData}}'></nav-bar>
+<import src="../../../dist/we-cropper.wxml" />
+<view class="imgDisposeBlock">
+  <view class='titleBar'>
+    图片上传
+  </view>
+  <view class='imgDisposeArea'>
+    <template is="we-cropper" data="{{...cropperOpt}}" />
+  </view>
+  <view class='imgDisposeControlLine'>
+    <view class='editBtn btn_primary reelectBtn' bindtap="uploadTap">选择图片</view>
+    <view class='editBtn btn_primary editPerfectBtn' bindtap="getCropperImage">上传</view>
+  </view>
+</view>

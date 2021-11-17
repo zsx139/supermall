@@ -1,0 +1,150 @@
+/* pages/my/orderDetails/index.wxss */
+.container{
+	width: 100%;
+	margin-bottom:50rpx;
+	padding-top: var(--status-bar-height);
+	margin-top:90rpx;
+}
+.details-xinxi{
+	width: 100%;
+	background-color: #313030;
+	color:#FFFFFF;
+	font-size: 24rpx;
+	box-sizing: border-box;
+	padding: 40rpx 60rpx;
+}
+.details-xinxi .details-xinxi-zhuangtai{
+	margin-bottom:30rpx;
+}
+.details-xinxi .details-xinxi-wuliu text{
+	display: inline-block;
+  margin-left:50rpx;
+  border: 1px solid #B3B3B3;
+  border-radius: 10rpx;
+  padding: 4rpx 10rpx;
+  font-size: 24rpx;
+}
+.siteList-item{
+	padding:20rpx 20rpx;
+	color: #676767;
+	box-sizing: border-box;
+	background-color: #FFFFFF;
+}
+.siteList-item .siteList-item-imgs{
+	width: 100rpx;
+	height: 100rpx;
+	background-color: #d8d8d8;
+	margin-right:30rpx;
+}
+.siteList-item .siteList-item-xinxi text:nth-child(1){
+	font-size:30rpx;
+	font-weight: bold;
+}
+.siteList-item .siteList-item-xinxi text:nth-child(2){
+	font-size:20rpx;
+	font-weight: bold;
+}
+.siteList-item .siteList-item-dizhi{
+	font-size:24rpx;
+	margin-top:10rpx;
+}
+
+.orderList-item{
+	padding:10rpx;
+	box-sizing: border-box;
+	background-color: #FFFFFF;
+	margin-top:30rpx;
+}
+.orderList-item .orderList-item-goods{
+	padding: 30rpx 0;
+	border-bottom:1px solid #d3d3d3;
+}
+.orderList-item .orderList-item-goods .orderList-item-goods-imgs{
+	width: 180rpx;
+	height: 180rpx;
+	background-color: #c1bdbd;
+}
+.orderList-item .orderList-item-goods .orderList-item-goods-text{
+	width: 70%;
+	font-size: 26rpx;
+}
+.orderList-item .orderList-item-goods .orderList-item-goods-text .goods-xinxi{
+	width: 100%;
+	display:flex;
+	margin-top:30rpx;
+}
+.orderList-item .orderList-item-goods .orderList-item-goods-text .goods-xinxi view{
+	flex-grow:1;
+	font-size: 22rpx;
+}
+.orderList-item .orderList-item-goods .orderList-item-goods-text .goods-xinxi view text{
+	font-size: 32rpx;
+}
+.orderList-item .orderList-item-bottom{
+	border-top: 1px solid #cfcfcf;
+	padding-top:20rpx;
+	font-size: 22rpx;
+}
+.orderList-item .orderList-item-bottom text:nth-child(1){
+	display: inline-block;
+	padding:10rpx 0;
+}
+.orderList-item .orderList-item-bottom text:nth-child(2){
+	display: inline-block;
+	padding:10rpx 25rpx;
+	background-color: #edebeb;
+}
+
+.orderDetails{
+	width: 100%;
+	background-color: #FFFFFF;
+	margin-top:30rpx;
+}
+.orderDetails .orderDetails-item{
+	padding: 20rpx 20rpx;
+	box-sizing: border-box;
+	font-size:24rpx;
+	border-bottom: 1px solid #f2f2f2;
+}
+.orderDetails .orderDetails-item .floatRight{
+	font-size:26rpx;
+}
+.orderDetails .orderDetails-item .iconfont{
+	font-size:36rpx;
+	display: inline-block;
+	margin-right:10rpx;
+	transform: translateY(8rpx);
+}
+
+.orderDetails-message{
+	background-color: #FFFFFF;
+	margin-top:30rpx;
+	font-size: 24rpx;
+	padding: 20rpx 30rpx;
+	box-sizing: border-box;
+	color: #8c8c8c;
+}
+.orderDetails-message view{
+	padding:5rpx 0;
+}
+.orderDetails-button{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 120rpx;
+	box-sizing: border-box;
+	background-color: #FFFFFF;
+	padding-top:20rpx;
+	padding-right:30rpx;
+}
+.orderDetails-button .orderDetails-button-btn{
+	font-size:24rpx;
+	width: 154rpx;
+	height: 70rpx;
+	text-align: center;
+	line-height: 70rpx;
+	background-color: #bebbbb;
+	color:#FFFFFF;
+	border-radius:6rpx;
+}

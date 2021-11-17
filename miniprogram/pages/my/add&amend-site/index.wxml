@@ -1,0 +1,52 @@
+<!--miniprogram/pages/my/add&amend-site/index.wxml-->
+<nav-bar navbar-data='{{navbarData}}'></nav-bar>
+<view class='son-page' style='margin-top:{{height}}px;height:{{clientHeight}}px;'>
+  <scroll-view style="height:100%;" scroll-y="true">
+    <view class="inputSite clear particulars_border-bom">
+      <view class="floatLeft">收货人</view>
+      <input class="floatLeft" placeholder-class="inplact" placeholder="请填写收货人姓名" bindinput="username" value="{{usernames}}" type="text" />
+    </view>
+    <view class="inputSite clear particulars_border-bom">
+      <view class="floatLeft">联系电话</view>
+      <input class="floatLeft" placeholder-class="inplact" placeholder="请填写收货人手机号" bindinput="userPhone" value="{{userPhones}}" type="text" />
+    </view>
+    <view class="inputSite clear particulars_border-bom">
+      <view class="floatLeft">发货人</view>
+      <input class="floatLeft" placeholder-class="inplact" placeholder="请填写收货人姓名" bindinput="FAusername" value="{{FAusernames}}" type="text" />
+    </view>
+    <view class="inputSite clear particulars_border-bom">
+      <view class="floatLeft">发货人电话</view>
+      <input class="floatLeft" placeholder-class="inplact" placeholder="请填写收货人手机号" bindinput="FAuserPhone" value="{{FAuserPhones}}" type="text" />
+    </view>
+    <!-- <view class="inputSite clear particulars_border-bom">
+      <view class="floatLeft">所在区域</view>
+      <view bindtap="toUp" style="{{area!=''?'color:#000000;':''}}" class="floatLeft site inplact">{{area}}<text wx:if="{{area==''}}">省市区县、乡镇</text> </view>
+    </view> -->
+    <view class="inputSite clear particulars_border-bom inDetail">
+      <textarea placeholder-class="inplact" bindinput="inDetail" value="{{inDetails}}" placeholder="请填写地址" name="" id="" cols="30" rows="10"></textarea>
+    </view>
+    <!-- <view class="inputSite clear particulars_border-bom">
+      <view class="floatLeft moRen">设为默认</view>
+      <switch class="floatRight" checked="true" bindchange="changeAutoplay" />
+    </view> -->
+    <!-- btn -->
+    <view bindtap="save" class="bottomBtn btnActive">{{btnText}}</view>
+  </scroll-view>
+  <!-- <view bindtap="toUp" style="width:100%;" class="block {{togwc==true?'fadeInUp':'fadeInDown'}}"></view>
+  <view style="width:100%;" class="select_box clear {{togwc==true?'fadeInUp':'fadeInDown'}}">
+    <view class="offs">请选择省市区县、乡镇</view>
+     <picker-view indicator-style="height: 50px;" class="pickerView" value="{{value}}" bindchange="bindChange">
+      <picker-view-column>
+        <view wx:for="{{chenshi}}" wx:key="index" class="pickerViewColumn">{{item.ssqname}}</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{shenShi}}" wx:key="index" class="pickerViewColumn">{{item.ssqname}}</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{shenqu}}" wx:key="index" class="pickerViewColumn">{{item.ssqname}}</view>
+      </picker-view-column>
+    </picker-view>
+    btn
+    <view bindtap="toUp" class="btn btnActive">确定</view>
+  </view> -->
+</view>

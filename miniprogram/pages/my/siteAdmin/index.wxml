@@ -1,0 +1,22 @@
+<!--miniprogram/pages/my/siteAdmin/index.wxml-->
+<nav-bar navbar-data='{{navbarData}}'></nav-bar>
+<view class='son-page' style='margin-top:{{height}}px;height:{{}}px;'>
+  <scroll-view class="scrollpaddingBotm" style="height:100%;" scroll-y="true">
+    <!--  -->
+    <view class="empty" wx:if="{{addressList==''}}">
+      <view>还没有收货地址哦</view>
+    </view>
+    <!--  -->
+    <view wx:for="{{addressList}}" wx:key="index" bindtap="toBack" data-siteid="{{item.addr_id}}" class="particulars_lists particulars_border-bom {{select==true?'btnActive':''}}">
+      <view class="userMessage">
+        <view>{{item.consignee}} <text>{{item.phone_tel}}</text><text> <!-- <text wx:if="{{index==0}}" class="default">默认</text> --></text></view>
+        <view class="userSite">{{item.address}}</view>
+      </view>
+      <view class="amend"> 
+        <text catchtap="_navto" data-url="/pages/my/add&amend-site/index?addrId={{item.addr_id}}&username={{item.consignee}}&userPhone={{item.phone_tel}}&FAusername={{item.fhr_name}}&FAuserPhone={{item.fhr_phone}}&inDetails={{item.address}}" class="iconfont icon-biji btnActive"></text>
+      </view>
+    </view>
+    <!-- btn -->
+    <view wx:if="{{addressList!=''}}" bindtap="_navto" data-url="/pages/my/add&amend-site/index" class="bottomBtn btnActive">+ 新增收货地址</view>
+  </scroll-view>
+</view>

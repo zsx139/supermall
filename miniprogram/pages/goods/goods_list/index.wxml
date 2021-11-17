@@ -1,0 +1,270 @@
+<!--miniprogram/pages/classify/classify_more_goods/index.wxml-->
+<nav-bar navbar-data='{{navbarData}}'></nav-bar>
+<view class='son-page glistIndex' style='margin-top:{{height}}px;height:{{clientHeight}}px;'>
+    <view class="filtrate clear" style="top:{{height-10}}px;">
+      <view class="toSearch btnActive" bindtap="_navto" data-url="/pages/indexs/search/index"><text class="iconfont icon-sousuo"></text>{{options.keywords?options.keywords:"搜索想要的商品"}}</view>
+      <view class="filtrate_item" bindtap="filtrateBlockTopTab">热门排序<text class="iconfont {{filtrateBlockTop==-1000?'icon-triangle-top-copy':'icon-triangle-top'}}"></text></view>
+      <view class="filtrate_item" bindtap="tofiltrate">
+        筛选商品
+        <text class="iconfont icon-shaixuan1"></text>
+        <text wx:if="{{options.brand_id != '' && options.brand_id != undefined || options.cate_id != '' && options.cate_id != undefined}}" class="iconfont icon-xingbiao"></text>
+      </view>
+    </view>
+    
+    <view bindtap="filtrateBlockTopTab" class="filtrateBlock" style="padding-top:{{height+50}}px;top:{{filtrateBlockTop}}px;">
+      <view class="centers">
+        <view class="center_item clear"> 
+          <view>价格<text class="iconfont icon-jiantou"></text></view>
+          <text catchtap="sortDate" data-leiXin="sort_price" data-order="desc" class="{{options.sort=='sort_price'&&options.order=='desc'?'active':''}}">从高到低<text class="iconfont icon-duigou" wx:if="{{options.sort=='sort_price'&&options.order=='desc'}}"></text></text>
+          <text catchtap="sortDate" data-leiXin="sort_price" data-order="asc" class="{{options.sort=='sort_price'&&options.order=='asc'?'active':''}}">从低到高<text class="iconfont icon-duigou" wx:if="{{options.sort=='sort_price'&&options.order=='asc'}}"></text></text>
+        </view>
+        <view class="center_item clear">
+          <view>折扣<text class="iconfont icon-jiantou"></text></view>
+          <text catchtap="sortDate" data-leiXin="sort_zhekou" data-order="desc" class="{{options.sort=='sort_zhekou'&&options.order=='desc'?'active':''}}">从高到低<text class="iconfont icon-duigou" wx:if="{{options.sort=='sort_zhekou'&&options.order=='desc'}}"></text></text>
+          <text catchtap="sortDate" data-leiXin="sort_zhekou" data-order="asc" class="{{options.sort=='sort_zhekou'&&options.order=='asc'?'active':''}}">从低到高<text class="iconfont icon-duigou" wx:if="{{options.sort=='sort_zhekou'&&options.order=='asc'}}"></text></text>
+        </view>
+        <view class="center_item clear">
+          <view>时间<text class="iconfont icon-jiantou"></text></view>
+          <text catchtap="sortDate" data-leiXin="add_time" data-order="desc" class="{{options.sort=='add_time'&&options.order=='desc'?'active':''}}">从高到低<text class="iconfont icon-duigou" wx:if="{{options.sort=='add_time'&&options.order=='desc'}}"></text></text>
+          <text catchtap="sortDate" data-leiXin="add_time" data-order="asc" class="{{options.sort=='add_time'&&options.order=='asc'?'active':''}}">从低到高<text class="iconfont icon-duigou" wx:if="{{options.sort=='add_time'&&options.order=='asc'}}"></text></text>
+        </view>
+      </view>
+    </view>
+
+    <!-- bindscrolltoupper='onRefresh' -->
+    <scroll-view 
+    style="height:100%;" 
+    scroll-top='{{topNum}}' 
+    scroll-y="true" 
+    refresher-threshold='{{45}}' 
+    bindrefresherrefresh="onRefresh" 
+    refresher-triggered="{{loading}}" 
+    bindscrolltolower="onReachBottom"
+    scroll-with-animation 
+    bindrefresherpulling="onPulling" 
+    class="clear"
+    >
+    <!-- bindrefresherpulling -->
+    <view>
+
+    </view>
+
+      <!-- <view wx:if="{{serverDatas==''&&goodlists!=undefined}}" class="empty">
+        <image src="../../../images/empty/order.png"></image>
+        <view>没有类型商品</view>
+      </view> -->
+      <view wx:if="{{serverDatas==null}}" class="empty">
+        <!-- <image src="../../../images/empty/order.png"></image> -->
+        <view class="icon">
+          <text class="iconfont icon-null"></text>
+        </view>
+        <view>没有该类型商品</view>
+      </view>
+      <!--  -->
+      <!-- <view class="empty" wx:if="{{goodlists==undefined}}">
+        <image src="../../../images/empty/discounts.png"></image>
+        <view>登陆后才能看到商品信息哦</view>
+      </view> -->
+      <!-- style="{{index>=2?'margin-top:100rpx;':''}}" -->
+
+      <!-- 商品类别 -->
+      <!-- <view bindtap="_navto"
+        data-url="/pages/goods/goods_particulars/index?goodsid={{item.goods_id}}" wx:for="{{serverDatas}}"
+        wx:key='index' class="{{CutClass==true?'goods_list_item':'goods_strip_item'}} classify_more_goods clear">
+        <view class="imgs">
+          <image data-index="{{index}}" bindload="imgInfo" style="width:{{imageSize[index].width}}rpx;height:{{imageSize[index].height}}rpx;" src="{{item.default_image}}"></image>
+          <image src="../../../images/loading/vpxyy_loading.png"></image>
+        </view>
+        <view class="stripRight_box">
+          <text style="font-size:25px;" catchtap='toStrip' data-toType="FenXiang" data-SpName="{{item.goods_name}}" data-myprice="{{item.user_price}}" data-goodsid="{{item.goods_id}}" class="iconfont icon-zhuanfa btnActive"></text>
+          <text style="font-size:25px;right:100rpx;" catchtap='toStrip' data-toType="Gwc" data-SpName="{{item.goods_name}}" data-myprice="{{item.user_price}}" data-goodsid="{{item.goods_id}}" class="iconfont icon-gouwudai1 btnActive"></text>
+          <text class="item_title">{{item.goods_name}}\n</text>
+          <text class="bolds textOver">
+            <text wx:if="{{item.zhekou!=''}}">{{item.zhekou}}折,</text>
+            <text wx:if="{{item.user_price}}">HK${{item.user_price}}</text>
+            <text class="tishi" wx:if="{{item.zhekou == 0 && !item.user_price}}">登录之后才能看到价格</text>
+          </text>
+        </view>.filtrateBox
+      </view> -->
+
+      <view wx:for="{{serverDatas}}" wx:key='index' class="newGoodsItem classify_more_goods clear">
+        <view class="newGoodsItemImg_box">
+          <view class="stripRight_box" bindtap="_navto" data-url="/pages/goods/goods_particulars/index?goodsid={{item.goods_id}}">
+            <view class="titles clear">
+              <text class="til_text">{{item.brand_name}}</text>
+              <!-- <text class="web-font"><text class="iconfont icon-jiantou"></text></text> -->
+            </view>
+              <text class="item_title">{{item.goods_name}}</text>
+              <text class="bolds textOver">
+                <text wx:if="{{item.zhekou!=''}}">{{item.zhekou}}折,</text>
+                <text wx:if="{{item.user_price}}">HK${{item.user_price}}</text>
+                <text class="tishi" wx:if="{{item.zhekou == 0 && !item.user_price}}">登录之后才能看到价格</text>
+              </text>
+          </view>
+          <view class="newGoodsItemImg_img clear">
+            <view wx:if="{{goodsMax[item.goods_id] == undefined}}" wx:key='index' class="newGoodsItemImg_img_item floatLeft">
+              <image src="../../../images/loading/vpxyy_loading.png"></image>
+            </view>
+            <view wx:for="{{goodsMax[item.goods_id]}}" wx:if="{{index<6}}" wx:key='index' class="newGoodsItemImg_img_item floatLeft">
+              <image src="../../../images/loading/vpxyy_loading.png"></image>
+
+              <!-- <image style="width:{{ImgHeight[index+'&'+item.goods_id].width}}px;height:{{ImgHeight[index+'&'+item.goods_id].height}}px;" bindload="swpInfo" bindtap="previewImg" data-index="{{index}}" data-aaa="{{index+'&'+item.goods_id}}" data-goodsid="{{item.goods_id}}" data-item="{{item.image_url}}" src="{{item.image_url}}"></image> -->
+              <image mode="heightFix" bindtap="previewImg" data-index="{{index}}" data-aaa="{{index+'&'+item.goods_id}}" data-goodsid="{{item.goods_id}}" data-item="{{item.image_url}}" src="{{item.image_url}}"></image>
+
+              <view wx:if="{{ index==5 && index<=5 && goodsMax[item.goods_id].length-6 != 0}}" class="more">
+                <text class="iconfont">+{{goodsMax[item.goods_id].length-6}}</text>
+              </view>
+            </view>
+          </view>
+          <text style="font-size:25px;" catchtap='toStrip' data-toType="FenXiang" data-SpName="{{item.goods_name}}" data-myprice="{{item.user_price}}" data-goodsid="{{item.goods_id}}" class="iconfont icon-zhuanfa btnActive"></text>
+            <text style="font-size:25px;right:100rpx;" catchtap='toStrip' data-toType="Gwc" data-SpName="{{item.goods_name}}" data-myprice="{{item.user_price}}" data-goodsid="{{item.goods_id}}" class="iconfont icon-gouwudai1 btnActive"></text>
+            <text style="font-size:30rpx;" class="floatRight bolds">转发</text>
+        </view>
+        <!-- <view class="cut-off_rule"></view> -->
+      </view>
+
+    </scroll-view>
+    <!-- 筛选 options.cate_id != '' && options.cate_id != undefined-->
+    <view class="block" bindtap="tofiltrate" style="margin-top:{{height-10}}px;height:{{contentHeight+10}}px;display:block;left:{{filtrateBoxLeft}}px;">
+      <view catchtap="cattab" class="filtrateBox" style="height:{{contentHeight+10}}px;">
+        <view style="height:{{clientHeight}}px;" class="leftList">
+          <view bindtap="tabNav" data-index="{{0}}" class="leftList_item {{tabIndex==0?'active':''}}">
+            <text wx:if="{{options.brand_id}}" class="iconfont icon-xingbiao"></text>
+            品牌
+          </view>
+          <view bindtap="tabNav" wx:for="{{leftLIst}}" data-index="{{index+1}}" data-cateId="{{}}" wx:key='index'
+            class="leftList_item {{tabIndex==index+1?'active':''}}">
+            <text wx:if="{{options.cate_id != '' && options.cate_id != undefined && goodsCate==index}}"
+              class="iconfont icon-xingbiao"></text>
+            {{item.name}}
+          </view>
+          <text style="top:{{tabNavTop}}px;" class="tabnavY"></text>
+        </view>
+        <!-- rightLIst -->
+        <view style="height:{{clientHeight}}px;" class="rightLIst">
+          <!-- 品牌 -->
+          <view wx:if="{{tabIndex==0}}" class='home-page' style='height:{{clientHeight}}px;box-sizing: border-box;'>
+            <!-- <view class="search home">
+              <input class="inputs" bindinput="bindcall" bindconfirm="searchSubmit" placeholder="搜索"
+                value="{{goodsname}}" placeholder-class="inp_place" type="text" />
+              <text style="top:{{height+6}}px;" wx:if="{{goodsname==''}}" class="iconfont icon-chakan"></text>
+            </view> -->
+            <scroll-view scroll-top='{{scrollTop}}' scroll-into-view="{{scroll}}" style="height:100%;" scroll-y="true">
+              <view class="titles clear brand_title home paddingTop">
+                <text class="til_text">品牌推荐</text>
+              </view>
+              <view class="brand_recommend home paddingTop">
+                <view bindtap="brandIds" data-brandid="{{item.brand_id}}" wx:for="{{recommend}}" wx:key="index"
+                  class="brand_recommend_item">
+                  <view class="brand_logo">
+                    <image src="{{item.logo}}"></image>
+                  </view>
+                  <view class="brand_text">{{item.name}}</view>
+                </view>
+              </view>
+              <view wx:for="{{brandsList}}" wx:key="index" class="brand_item">
+                <view class="letter" id="{{index}}">{{index}}</view>
+                <view id="{{'z'+item.brand_id}}" bindtap="brandIds" data-brandid="{{item.brand_id}}" wx:for="{{item}}" wx:key="index"                   class="brand_item_brand btnActive {{options.brand_id==item.brand_id?'active':''}}">{{item.brand_name}}
+                  <text wx:if="{{options.brand_id==item.brand_id?'active':''}}" class="iconfont icon-duigoubiao"></text>
+                </view>
+              </view>
+            </scroll-view>
+            <view wx:if="{{filtrateBoxLeft==0}}" class="nav" style="margin-top:{{height+20}}px;">
+              <ul>
+                <li class="zm" id="nav_item" bindtouchstart="touchstart" data-opt="{{index}}"
+                  data-brandid="{{item.brand_id}}" bindtap="tap" bindtouchmove="touchmove" bindtouchend="touchend"
+                  wx:for="{{zimu_list}}" wx:key="index">
+                  <view data-opt="{{'intociewfind'+index}}">{{item}}</view>
+                </li>
+              </ul>
+            </view>
+            <view hidden="{{hiddenn}}" class="nav_text">{{nav_text}}</view>
+            <!-- wx:if="{{options.brand_id != '' && options.brand_id != undefined && filtrateBoxLeft==0}}" -->
+            <view wx:if="{{options.brand_id != '' && options.brand_id != undefined && filtrateBoxLeft==0}}" bindtap="brandScrowInto" class="ToInFo"><text class="iconfont icon-miaozhun"></text></view>
+          </view>
+          <scroll-view style="height:100%;" scroll-y="true">
+
+            <view wx:for="{{rightList.sub}}" data-index="{{index}}" wx:key='index' class="rightLIst_cls">
+              <!-- rightLIst_title标题 -->
+              <view class="titles clear rightLIst_title">
+                <!-- rightLIst_title 这里把titles的字体调小点 -->
+                <text class="til_text">{{item.title}}</text>
+              </view>
+              <!-- rightLIst_title标题里的商品 icon-xingbiao-->
+              <view class="LIst_cls_goods">
+                <view bindtap="goodsCateIDs" wx:for="{{item.data}}" data-cateid="{{item.cate_id}}" wx:key='index' class="LIst_cls_item {{options.cate_id==item.cate_id?'active':''}}">
+                  <view class="item_img">
+                    <image src="{{item.icon_img}}"></image>
+                  </view>
+                  <view class="item_text">{{item.cate_name}}</view>
+                  <text wx:if="{{options.cate_id==item.cate_id?'active':''}}" class="iconfont icon-duigoubiao"></text>
+                </view>
+              </view>
+            </view>
+          </scroll-view>
+        </view>
+      </view>
+    </view>
+
+
+
+    <view bindtap="toStrip" class="block clear {{toFenXiang==true?'fadeInUp':'fadeInDown'}}"></view>
+    <view wx:if="{{toType=='FenXiang'}}" class="select_box {{toFenXiang==true?'fadeInUp':'fadeInDown'}}" >
+      <view class="select_box_title">
+        <text>分享</text>
+        <view>(默认下载全部哦)</view>
+        <view class="select_box_title_goodsName">{{SpName}},HK${{myPrice}}</view>
+      </view>
+      <view class="toStripImg clear" style="height:{{contentHeight/2}}px;">
+        <scroll-view style="height:100%;" scroll-y="true">
+          <view bindtap="change" data-index="{{index}}" wx:for="{{FenXiangImg}}" wx:key='index' class="{{changeAc[index]==index?'active':''}}">
+            <!-- <image bindload="showImg" style="width:{{ showImgHeight[index].width}}rpx; height:{{ showImgHeight[index].height }}rpx;" data-index="{{index}}" src="{{item.image_url}}"></image> -->
+            <image mode="heightFix" src="{{item.image_url}}"></image>
+            <image src="../../../images/loading/vpxyy_loading.png"></image>
+            <text wx:if="{{changeAc[index]==index}}" class="iconfont icon-xuanzhong1"></text>
+          </view>
+        </scroll-view>
+      </view>
+      <view class="bottom_btn zIndex center particulars_border-top">
+        <view bindtap="Down"  class="btns btnActive">
+          <text class="">下载分享</text>
+        </view>
+      </view>
+    </view>
+
+      <view wx:if="{{toType=='Gwc'}}" class="select_box {{toFenXiang==true?'fadeInUp':'fadeInDown'}}" >
+        <view class="select_box_title">
+          <text>添加购物车</text>
+          <!-- <view>(默认下载全部哦)</view> -->
+          <view class="select_box_title_goodsName">{{SpName}},HK${{myPrice}}</view>
+        </view>
+        
+
+        <view class="ToGwc clear" style="height:{{contentHeight/2}}px;">
+          <scroll-view style="height:100%;" scroll-y="true">
+            <view wx:if="{{storehouseStockInfo.length==0}}" class="particulars_lists">
+              <view style="width:100%;">本商品已售空，请先收藏</view>
+            </view>
+            <view wx:for="{{storehouseStockInfo}}"  wx:key='index'>
+              <view class="cut-off_rule"></view>
+              <view class="particulars_lists">
+                <view class="bolds">{{item.sh_name}}</view>
+                <view></view>
+              </view>
+              <view class="particulars_lists particulars_size">
+                <view class="size">
+                  <text bindtap="sizeSelect" class="{{sizeIndex[item.sh_id+'&'+item.spec_id]==item.sh_id+'&'+item.spec_id?'active':''}}" data-shid="{{item.sh_id}}" data-spaecid="{{item.spec_id}}" data-goodeid="{{item.goods_id}}" data-index="{{index}}" wx:for="{{item.specList}}" wx:key='index'>{{item.size_name}}</text>
+                </view>
+                <!-- <view bindtap="toUp" data-cang="{{index}}"><text class="btnActive">购买</text></view> -->
+              </view>
+            </view>
+          </scroll-view>
+        </view>
+        <view class="bottom_btn zIndex center particulars_border-top">
+          <view bindtap="addgoods"  class="btns btnActive">
+            <text class="">加入购物车</text>
+          </view>
+        </view>
+      </view>
+  <!-- </movable-area> -->
+</view>

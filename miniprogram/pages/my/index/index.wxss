@@ -1,0 +1,205 @@
+/* miniprogram/pages/my/index/index.wxss */
+page{
+  background-color: #F8F8F8;
+}
+.myIndex{
+  margin-bottom:150rpx;
+}
+.userMessage{
+  width: 100%;
+  height: 210px;
+  position: relative;
+}
+.userMessage .backgroundImg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* background-color:#0092FF; */
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+}
+.userMessage .backgroundBox{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+}
+.userMessage .userMessage_name,.userMessage_set{
+  width: 50%;
+  height: 60%;
+  padding: 15px;
+  box-sizing: border-box;
+}
+.userMessage .userMessage_name{
+  display: flex;
+  align-items: center;
+}
+.userMessage .userMessage_name view:nth-child(1){
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 120rpx;
+  overflow: hidden;
+  margin-right:40rpx;
+  transform: translateY(-24rpx);
+  box-sizing: border-box;
+  border:1px solid #59B9FF;
+  background-color: #ffffff;
+}
+.userMessage .userMessage_name view:nth-child(2){
+  color: #ffffff;
+  font-size: 34rpx;
+  transform: translateY(-24px);
+}
+.userMessage .userMessage_set{
+  text-align: right;
+  color: #ffffff;
+}
+.userMessage .userMessage_set .iconfont{
+  font-size: 20px;
+  color: #C4E6FF;
+}
+.user_list{
+  width: 100%;
+  height: 40%;
+  display: flex;
+}
+.user_list .user_list_item{
+  flex-grow:1;
+  text-align: center;
+  color: #ffffff;
+  /* background-color:#0092FF; */
+}
+.user_list .user_list_item view:nth-child(1){
+  font-size: 25px;
+  margin-bottom:10px;
+}
+.user_list .user_list_item view:nth-child(2){
+  font-size: 10px;
+  color: #C4E6FF;
+}
+/* 订单 */
+.allOrder{
+  width: 95%;
+  padding-bottom:20px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius:20rpx;
+}
+.allOrder .particulars_lists .bolds{
+  font-size: 30rpx;
+}
+.allOrder .particulars_lists:nth-child(2){
+  font-size: 28rpx;
+}
+.allOrder .allOrder_list{
+  width: 100%;
+  display: flex;
+}
+
+.allOrder_list .allOrder_list_item{
+  flex-grow:1;
+  text-align: center;
+  position: relative;
+}
+.allOrder_list .allOrder_list_item .iconfont{
+  font-size: 70rpx;
+}
+.allOrder_list .allOrder_list_item .item_num{
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  text-align: center;
+  line-height: 14px;
+  background-color:red;
+  color:#ffffff;
+  font-size: 10px;
+  border-radius:8px;
+  position: absolute;
+  right: 10px;
+  top: 0;
+}
+.allOrder_list .allOrder_list_item view{
+  margin-top:10px;
+  font-size: 24rpx;
+}
+.allOrder_list .allOrder_list_item image{
+  width: 40px;
+  height: 40px;
+}
+
+/* 用户功能 */
+.userAbility{
+  width: 95%;
+  background-color: #ffffff;
+  margin: 0 auto;
+  border-radius: 20rpx;
+}
+.userAbility .particulars_lists{
+  border-color: #EFEFEF;
+}
+.userAbility .particulars_lists view:nth-child(1){
+  font-size: 16px;
+}
+.userAbility_item{
+  width: 100%;
+}
+.userAbility_item .userAbility_item_icon{
+  width: 10%;
+  height: 42px;
+  padding: 10px 10px;
+  box-sizing: border-box;
+}
+.userAbility_item .particulars_lists{
+  width: 90%;
+  padding: 10px 10px 10px 0;
+}
+.userAbility_item .particulars_lists view:nth-child(1){
+  font-size: 28rpx;
+}
+.particulars_border-bom{
+  border-color:#EFEFEF;
+}
+.block{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.codeBox .btns .qrcode{
+  width: 100%;
+}
+
+.myFunction{
+	width: 95%;
+	box-sizing: border-box;
+	padding:30rpx;
+	margin-top:30rpx;
+	background-color: #FFFFFF;
+	margin: 30rpx auto 0 auto;
+	border-radius:15rpx;
+}
+.myFunction .myFunction-title{
+	font-size:28rpx;
+	font-weight: bold;
+}
+
+.myFunction .myFunction-box .myFunction-box-item{
+	margin-right:110rpx;
+	text-align: center;
+	font-size:22rpx;
+  margin-top:40rpx;
+  height: 124rpx;
+}
+.myFunction .myFunction-box .myFunction-box-item .myFunction-box-item-imgs{
+	width: 140rpx;
+	height: 80rpx;
+	margin-bottom:15rpx;
+}
+.myFunction .myFunction-box .myFunction-box-item .myFunction-box-item-imgs .iconfont{
+	font-size:60rpx;
+}
+.yue .myFunction-box-item-imgs{
+  margin: 0 !important;
+}

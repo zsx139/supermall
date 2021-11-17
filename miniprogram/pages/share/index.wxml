@@ -1,0 +1,68 @@
+<!--miniprogram/pages/share/index.wxml-->
+<nav-bar navbar-data='{{navbarData}}'></nav-bar>
+<view class="home-page" style='margin-top:{{height}}px;'>
+  <!-- <scroll-view style="height:100%;height:{{contentHeight}}px;" scroll-y="true"> -->
+    <view class="particulars_lists particulars_border-bom">
+      VERY PEFECT供货价HK${{data.info.mprice}}
+    </view>
+    <view class="particulars_lists shouJia">
+      <view>我的售价</view>
+      <view class="blue">收益HK${{shouYi}}</view>
+    </view>
+    <view class="sellingPrice bolds particulars_border-bom bolds">HK${{myPrice}}</view>
+    <view class="particulars_lists raise">
+      全局加价
+      <text>（百分比和整体不可同时使用）</text>
+    </view>
+    <view class="particulars_lists particulars_border-bom entirety">
+      <text data-index="0" bindtap="toUp" class="entirety_text btnActive">整体加价
+        <text hidden="{{noSet==null||noSet=='1'?0:1}}">未设置</text>
+      </text>
+      <text data-index="1" bindtap="toUp" class="entirety_text btnActive">百分比加价
+        <text hidden="{{noSet==null||noSet=='0'?0:1}}">未设置</text>
+      </text>
+    </view>
+    <!-- 下载图片 -->
+    <view class="download">
+      <view class="download_title">下载商品图片 (点击图片可选择下载,默认下载全部)</view>
+      <view bindtap="change" data-index="{{index}}" wx:for="{{data.gallery}}" wx:key='index' class="download_item {{changeAc[index]==index?'active':''}}">
+        <image bindload="showImg" style="width:{{ showImgHeight[index].width}}rpx; height:{{ showImgHeight[index].height }}rpx;" data-index="{{index}}" src="{{item.image_url}}"></image>
+        <text wx:if="{{changeAc[index]==index}}" class="iconfont icon-xuanzhong1"></text>
+      </view>
+    </view>
+    <view class="bottom_btn">
+      <view class="btns">
+        <view bindtap="Down" class="btnActive bolds">下载分享</view>
+      </view>
+    </view>
+    <!-- 加价 -->
+    <view bindtap="" class="block clear {{togwc==true?'fadeInUp':'fadeInDown'}}">
+      <view catchtap='cattab' class="select_box clear">
+        <view class="clear">
+          <view class="goodsXq_text floatLeft">
+            <view class="back floatLeft" hidden="{{custom}}" bindtap="addPrice" data-index="5" class="floatLeft">上一步</view>
+            <view style="margin-left:{{addPriceXuan==false?'60rpx':''}};" class="select_box_title floatLeft">转发商品价格</view>
+          </view>
+          <view class="offs clear floatLeft"></view>
+        </view>
+        <!--  -->
+        <view hidden="{{addPriceXuan}}" class="box">
+          <view wx:for="{{addPriceList}}" wx:key='index' bindtap="addPrice" data-index="{{index}}" data-type="{{item}}" class="box_item {{addPrices==index?'active':''}}">{{item}}</view>
+        </view>
+        <view hidden="{{custom}}" class="box">
+          <view class="boxInp">
+            <input bindinput="bindcall" value="{{addpercent}}" type="number"/>
+          </view>
+        </view>
+        
+      </view>
+    </view>
+    <!-- btn -->
+    <view hidden="{{!togwc}}" class="bottom_btn">
+      <view class="btns">
+        <view bindtap="confirmAdd" class="btnActive">确定</view>
+      </view>
+    </view>
+    <tui-modal show="{{modalShow}}" bindclick="modalBtn" title="提示" content="登录之后才可以分享哦"></tui-modal>
+  <!-- </scroll-view> -->
+</view>

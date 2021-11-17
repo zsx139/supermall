@@ -1,0 +1,122 @@
+<!--miniprogram/pages/index/index.wxml-->
+<nav-bar navbar-data='{{navbarData}}'></nav-bar>
+<view class='home-page' style='margin-top: {{height}}px;'>
+  <!-- 搜索 -->
+  <view bindtap='_navto' data-url="/pages/indexs/search/index" class="indexInput">
+    <view class="indexInput-icon floatLeft">
+      <text class="iconfont icon-sousuo"></text>
+    </view>
+    <view class="indexInput-btn floatRight">搜索</view>
+  </view>
+  
+
+  <!-- 轮播 -->
+  <!-- <view style="position:relative;width:100%;height:{{swpHeight}}px;"> -->
+    <view class="swpView newSwiper" style="height:{{swpHeight}}px;">
+      <swiper bindanimationfinish="bindchangeSwiper" autoplay circular='true' current="{{select}}" duration="300" bindchange="activeSw">
+        <swiper-item bindtap="swpNavto" data-filter="{{item.href.filter}}" wx:for="{{dataList.data.banners}}" wx:key="index">
+          <image bindload="swpInfo" src="{{item.img}}"></image>
+        </swiper-item>
+      </swiper>
+      <view class="swp_index">
+        <text wx:for="{{dataList.data.banners}}" wx:key="index" class="{{select==index?'active':''}}"></text>
+      </view>
+    </view>
+  <!-- </view> -->
+  
+
+  <!-- <view class="swpView" style="height:{{swpHeight}}px;">
+    
+  </view> -->
+  <!-- 今日推荐 -->
+  <view class="toDay clear">
+    <view style="text-align:left;" class="titles clear">
+      <text class="til_text">今日推荐</text>
+      <text bindtap="_navto" data-url="/pages/goods/goods_list/index" class="web-font">更多<text class="iconfont icon-jiantou"></text></text>
+    </view>
+    <!--  -->
+    <view class="empty" wx:if="{{dataList.data.banners==undefined}}">
+      <!-- <image src="../../../images/empty/discounts.png"></image> -->
+      <view>加载中...</view>
+    </view>
+    <!--  -->
+    <scroll-view scroll-x="true" class="clear" style="white-space: nowrap; display:flex;">
+      <view style="width:{{goodsWidth}}px;" bindtap="_navto" data-url="/pages/goods/goods_particulars/index?goodsid={{item.goods_id}}" wx:for="{{dataList.data.recommend}}" wx:key='index'  class="goods_list_item">
+        <view class="imgs box_shadow">
+          <!-- <image data-index="{{ index }}" bindload="imgInfo" style="width:{{ imgHeight[index].width }}rpx; height:{{ imgHeight[index].height }}rpx;" src="{{item.default_image}}"></image> -->
+          <image mode="heightFix" src="{{item.default_image}}"></image>
+
+          <image src="../../../images/loading/vpxyy_loading.png"></image>
+        </view>
+        <text class="item_title" style="width: 304rpx; height: 40rpx; display: -webkit-box; box-sizing: border-box">{{item.goods_name}}\n</text>
+        <text>
+          <text wx:if="{{item.zhekou != 0}}">{{item.zhekou}}折,</text> 
+          <text wx:if="{{item.user_price}}">HK${{item.user_price}}</text>
+          <text class="tishi" wx:if="{{item.zhekou == 0}}">登录之后才能看到价格</text>
+        </text>
+      </view>
+   </scroll-view>
+  </view>
+  <!-- 推荐 -->
+  <view class="toDay" wx:for="{{dataList.data.topic}}" wx:key='index'>
+    <!-- <view class="titles"></view> -->
+    <view class="brandLogo">
+      <image bindtap="_navto" data-url="/pages/goods/goods_list/index?order={{item.href.filter.order}}&sort={{item.href.filter.sort}}&tag_id={{item.href.filter.tag_id}}" src="{{item.banner}}"></image>
+    </view>
+    <scroll-view scroll-x="true" style="white-space: nowrap; display:flex;">
+      <view bindtap="_navto" data-url="/pages/goods/goods_particulars/index?goodsid={{item.goods_id}}" wx:for="{{item.goods}}" wx:key='index' class="goods_list_item">
+        <view class="imgs">
+          <image mode="heightFix" src="{{item.default_image}}"></image>
+        </view>
+        <text class="item_title">{{item.goods_name}}\n</text>
+        <!-- <text>{{item.zhekou}}折,￥{{item.user_price}}元</text> -->
+        <text>
+          <text wx:if="{{item.zhekou != 0}}">{{item.zhekou}}折,</text> 
+          <text wx:if="{{item.user_price}}">HK${{item.user_price}}</text>
+          <text class="tishi" wx:if="{{item.zhekou == 0}}">登录之后才能看到价格</text>
+        </text>
+      </view>
+   </scroll-view>
+  </view>
+  <!-- 品牌 -->
+  <view style="margin-bottom:{{index==dataList.data.brands.length-1?'80rpx':'0rpx'}};" class="toDay" wx:for="{{dataList.data.brands}}" wx:key='index'>
+    <view class="titles">
+      <text wx:if="{{index==0}}" class="til_text">品牌推荐</text>
+    </view>
+    <view class="brandLogo">
+      <image bindtap="_navto" data-url="/pages/goods/goods_list/index?brand_id={{item.id}}" src="{{item.banner}}"></image>
+      <!-- <view class="toMore btnActive">查看更多</view> -->
+    </view>
+    <scroll-view scroll-x="true" style="white-space: nowrap; display:flex;">
+      <view  bindtap="_navto" data-url="/pages/goods/goods_particulars/index?goodsid={{item.goods_id}}" wx:for="{{item.goods}}" wx:key='index' class="goods_list_item">
+        <view class="imgs">
+          <image mode="heightFix" src="{{item.default_image}}"></image>
+          <!-- <image src=""></image> -->
+        </view>
+        <text class="item_title">{{item.goods_name}}\n</text>
+        <!-- <text>{{item.zhekou}}折,￥{{item.user_price}}元</text> -->
+        <text>
+          <text wx:if="{{item.zhekou != 0}}">{{item.zhekou}}折,</text> 
+          <text wx:if="{{item.user_price}}">HK${{item.user_price}}</text>
+          <text class="tishi" wx:if="{{item.zhekou == 0}}">登录之后才能看到价格</text>
+        </text>
+      </view>
+   </scroll-view>
+  </view>
+  <view hidden="{{keFuCode}}" class="block">
+    <view class="codeBox">
+      <view class="codeBox_title">
+        <view>VPXYY</view>
+        <view>添加微信，联系您的客户经理</view>
+      </view>
+      <view class="code">
+        <image src="{{getContactQr.data.img_qr}}"></image>
+      </view>
+      <view class="btns">
+        <view bindtap="textPaste">复制微信号</view>
+        <view bindtap="Down">下载二维码</view>
+      </view>
+    </view>
+  </view>
+  <tui-modal show="{{modalShow}}" bindclick="modalBtn" title="VERY PEFECT" content="系统仅对会员开放，请先登录或注册成为会员"></tui-modal>
+</view>

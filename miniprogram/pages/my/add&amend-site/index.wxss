@@ -1,0 +1,41 @@
+/* miniprogram/pages/my/add&amend-site/index.wxss */
+.particulars_lists{
+  border-color: #EFEFEF;
+  padding: 15px 10px;
+}
+.particulars_lists view{
+  font-size: 15px;
+}
+.particulars_lists view:nth-child(2){
+  color:#A2A5B9;
+}
+.particulars_lists view .iconfont{
+  display: inline-block;
+  transform: translateY(2px);
+}
+.particulars_lists{
+  display: flex;
+  align-items: center;
+}
+.particulars_lists .userImg{
+  width: 60px;
+  height: 60px;
+  border-radius: 60px;
+  overflow: hidden;
+  border: 1px solid #D1D1D1;
+  margin-right:10px;
+}
+.particulars_lists view:nth-child(1){
+  width: 75%;
+  float: left;
+
+}
+.particulars_lists view:nth-child(2){
+  display: flex;
+  align-items: center;
+  width: 25%;
+  float: left;
+}
+.inputSite input{
+  color: #000000 !important;
+}

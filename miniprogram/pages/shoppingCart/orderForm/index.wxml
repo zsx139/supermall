@@ -1,0 +1,105 @@
+<!--miniprogram/pages/shoppingCart/orderForm/index.wxml-->
+<!-- orderXingQ -->
+<nav-bar navbar-data='{{navbarData}}'></nav-bar>
+<view class='son-page' style='margin-top:{{height}}px;height:{{clientHeight}}px;'>
+  <scroll-view class="btns_bottom" style="height:100%;" scroll-y="true">
+    <view bindtap="{{payForTheOrder=='true'?'toKuaiDiUp':''}}" data-type="courier" class="particulars_lists distribution">
+      <view><text>快递方式</text></view>
+      <view>{{KuaiDi}}<text wx:if="{{payForTheOrder=='true'}}" class="iconfont icon-jiantou"></text></view>
+    </view>
+    <view bindtap="{{payForTheOrder=='true'?'_navto':''}}" data-url="/pages/my/siteAdmin/index?select=true" class="TkaeGooodsSite particulars_border-top clear {{payForTheOrder=='true'?'btnActive':''}}">
+      <view class="floatLeft icon"><text class="iconfont icon-location"></text></view>
+      <view wx:if="{{site}}" class="userMessage floatLeft">
+        <view>
+          <text>{{site.consignee}}</text><text>{{site.phone_tel==null?"000-0000-0000":site.phone_tel}}</text>
+        </view>
+        <view>
+          <text>{{site.address}}</text>
+        </view>
+      </view>
+      <view wx:if="{{!site}}" class="userMessage floatLeft bolds fontSize14">选择收货地址</view>
+      <view class="floatLeft icon center"><text wx:if="{{!site}}" class="iconfont icon-jiantou"></text></view>
+    </view>
+    <view class="borderStyle">
+      <image src="../../../images/background/border.png"></image>
+    </view>
+    <view class="cut-off_rule"></view>
+    <view wx:for="{{checkedGoodsList}}" bindtap="_navto" data-url="/pages/goods/goods_particulars/index?goodsid={{item.goods_id}}" wx:key='index' class="goods clear btnActive">
+      <view style="width:{{windowWidth*0.26}}px;height:{{windowWidth*0.26}}px;overflow: hidden;display: inline-block;" class="imgs floatLeft">
+        <image data-index="{{ index }}" bindload="imgInfo" style="width:{{ imageSize[index].width }}rpx; height:{{ imageSize[index].height }}rpx;" class="" src="{{item.goods_image}}"></image>
+      </view>
+      <view class="texts floatLeft">
+        <view>{{item.goods_name}}</view>
+        <view>{{item.size_name}}</view>
+        <view>数量×<text>{{item.quantity}}</text><text class="money red">HK$<text class="">{{payForTheOrder=='true'?item.price:item.goods_price}}</text></text></view>
+      </view>
+    </view>
+    <!-- <view bindtap="{{payForTheOrder=='true'?'toUp':''}}" data-type="discount" class="particulars_lists btnActive particulars_border-top">
+      <view>支付方式</view>
+      <view bindtap="">{{discounts}}<text wx:if="{{payForTheOrder=='true'}}" class="iconfont icon-jiantou"></text></view>
+    </view> -->
+    <view class="cut-off_rule"></view>
+    
+    <view class="particulars_lists">
+      <view><text>商品金额</text></view>
+      <view>HK${{order.actualPrice}}</view>
+    </view>
+    <view class="particulars_lists">
+      <view><text decode="{{true}}" space="{{true}}">运&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;费</text></view>
+      <view>HK${{YunFei}}</view>
+    </view>
+    <!-- <view class="particulars_lists">
+      <view><text>优惠金额</text></view>
+      <view>HK$0.00</view>
+    </view> -->
+    <view class="particulars_lists">
+      <view><text>应付款金额</text></view>
+      <view>{{orderPrice}}</view>
+      <!-- order_amount -->
+    </view>
+    <!-- <view class="particulars_lists">
+      <view><text>约合人民币</text></view>
+      <view>1192642649269</view>
+    </view> -->
+    <!-- <view class="remark">注：如果有问题请联系客服微信号：xxxxxxx</view> -->
+    <!-- 底部按钮 -->
+    <view class="bottom_btn" wx:if="{{payForTheOrder=='true'}}">
+      <view class="btns">
+        <view bindtap="QuXiao" class="btnActive">取消订单</view>
+        <view bindtap="toUp" class="btnActive">立即付款</view>
+      </view>
+    </view>
+    <!-- 支付选择 -->
+    <view bindtap="toUp" style="width:{{windowWidth}}px;" class="block {{togwc==true?'fadeInUp':'fadeInDown'}}"></view>
+    <view class="payment select_box clear {{togwc==true?'fadeInUp':'fadeInDown'}}">
+        <!-- <view class="offs clear"><text bindtap="toUp" class="iconfont icon-chuyidong1-copy"></text></view> -->
+        <radio-group bindchange="radioChange">
+          <view wx:for="{{paymentId}}" wx:key='index' class="particulars_lists radios">
+            <view><text style="color:{{item.payment_name=='微信支付'?'#09BB07':'#EA9E11'}};" class="iconfont {{item.payment_name=='微信支付'?'icon-weixinzhifu':'icon-xinbaniconshangchuan-'}}"></text><text>{{item.payment_name}}</text></view>
+            <view>
+              <radio value="{{item.payment_name}}-{{item.payment_id}}"></radio>
+            </view>
+          </view>
+        </radio-group>
+        <!-- btn -->
+        <view bindtap="ZhiFu" class="btn btnActive">确定</view>
+    </view>
+
+
+    <!-- 快递方式 -->
+    <view bindtap="toKuaiDiUp" style="width:{{windowWidth}}px;" class="block {{toKuaiDi==true?'fadeInUp':'fadeInDown'}}"></view>
+    <view style="width:{{windowWidth}}px;" class="select_box clear {{toKuaiDi==true?'fadeInUp':'fadeInDown'}}">
+        <view class="offs clear"><text bindtap="toKuaiDiUp" class="iconfont icon-chuyidong1-copy"></text></view>
+        <radio-group bindchange="radioChangeKuaiDi">
+          <view wx:for="{{KuaiDiList}}" wx:key='index' class="particulars_lists radios">
+            <view><text>{{item.shipping_name}}</text></view>
+            <view class="shipFeeRadios">
+              <radio value="{{item.shipping_name}}-{{item.shipping_price}}-{{item.shipping_id}}"></radio>
+            </view>
+          </view>
+        </radio-group>
+        <!-- btn -->
+        <view bindtap="toIndex" class="btn btnActive">确定</view>
+    </view>
+  </scroll-view>
+</view>

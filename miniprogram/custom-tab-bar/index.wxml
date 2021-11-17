@@ -1,0 +1,6 @@
+<view class="tbb">
+  <view wx:for="{{list1}}" class="tab-bar-item" wx:key="index" data-path="{{item.pagePath}}" data-index="{{index}}" bindtap="switchTab">  
+    <image class="imgs" src="{{item.iconPath}}"></image>
+    <view class="text {{item.show==true?'':'bold'}}">{{item.text}}<text class="iconfont icon-yemian-copy-copy-copy"></text></view>
+  </view>
+</view>

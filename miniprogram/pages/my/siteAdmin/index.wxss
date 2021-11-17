@@ -1,0 +1,48 @@
+/* miniprogram/pages/my/siteAdmin/index.wxss */
+.particulars_lists view:nth-child(1){
+  width: 100%;
+  font-size: 28rpx;
+}
+.particulars_lists .amend{
+  display: block;
+  width: 20px;
+  text-align: right;
+}
+.particulars_lists .amend .iconfont{
+  display: inline-block;
+  float: right;
+}
+.particulars_lists view:nth-child(2){
+  width: 100%;
+  font-size:28rpx;
+  text-align: left;
+}
+.particulars_lists .userSite{
+  text-align: left;
+  text-align: justify;
+  text-justify: newspaper;
+  word-break: break-all;
+}
+.particulars_lists view:nth-child(1) text:nth-child(1){
+  font-size: 24rpx;
+  color:#C2C2C2;
+  display: inline-block;
+  margin-left:5px;
+}
+.particulars_lists view:nth-child(1) text:nth-child(2) .default{
+  padding: 2px 6px;
+  font-size: 20rpx;
+  color:#FFD5E4;
+  background-color:#FE4387;
+  border-radius: 3px;
+  display: inline-block;
+  margin-left:5px;
+}
+.particulars_lists view:nth-child(1) .userSite{
+  font-size: 25rpx;
+  /* margin-top:5px; */
+}
+.scrollpaddingBotm{
+  box-sizing: border-box;
+  padding-bottom:118rpx;
+}

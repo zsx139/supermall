@@ -1,0 +1,172 @@
+/* miniprogram/components/navbar/index.wxss */
+/* 顶部要固定定位   标题要居中   自定义按钮和标题要和右边微信原生的胶囊上下对齐 */
+.nav-wrap {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background: #fff;
+  color: #000;
+  z-index:9999999999999;
+}
+/* 标题要居中 */
+.nav-title {
+  position: absolute;
+  text-align: center;
+  max-width: 250rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  font-size: 36rpx;
+  color: #2c2b2b;
+  z-index: 999999;
+  /* font-weight: 600; */
+}
+/* 左侧一些按钮 */
+.nav-btns{
+  position: absolute;
+  top: 26px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99999;
+}
+.nav-capsule {
+  display: flex;
+  align-items: center;
+  margin-left: 30rpx;
+  width: 140rpx;
+  justify-content: space-between;
+  height: 100%;
+  transform: translateY(6rpx);
+}
+.navbar-v-line {
+  width: 2rpx;
+  height: 32rpx;
+  background-color: #e5e5e5;
+}
+
+.back-pre {
+  width: 40rpx;
+  height: 40rpx;
+  margin-top: 4rpx;
+  padding: 10rpx;
+}
+.back-home,.search {
+  width: 40rpx;
+  height: 40rpx;
+  margin-top: 4rpx;
+  padding: 10rpx;
+}
+
+.nav-capsule .back-home {
+  width: 48rpx;
+  height: 48rpx;
+  margin-top: 3rpx;
+}
+
+.iconfont{
+  font-size: 20px;
+  color: #000;
+  display: inline-block;
+}
+.block{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+  background-color: rgba(9, 9, 9, 0.8);
+  /* display: none; */
+}
+.codeBox{
+  width: 70%;
+  height: 43%;
+  background-color: #ffffff;
+  text-align: center;
+  position: relative;
+}
+.codeBox .codeBox_title view:nth-child(1){
+  font-weight: 600;
+  font-size: 30rpx;
+}
+.codeBox .codeBox_title view:nth-child(2){
+  font-size: 25rpx;
+  margin-top:20rpx;
+  color:#979797;
+}
+.codeBox .codeBox_title{
+  margin-top:40rpx;
+}
+.codeBox .code{
+  width: 360rpx;
+  height: 360rpx;
+  margin: 40rpx auto;
+}
+.codeBox .btns{
+  width: 100%;
+  height: 75rpx;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+.codeBox .btns view{
+  width: 50%;
+  display: inline-block;
+  line-height: 75rpx;
+  font-size: 26rpx;
+  color:#ffffff;
+  background-color: #4087F2;
+}
+.codeBox .btns view:active{
+  background-color: #3475E0;
+}
+/* 按钮按下样式 */
+.btnActive:active{
+  /* background-color: #D2D2D2 !important; */
+  opacity: 0.2 !important;
+}
+.indexInput{
+  width: 90%;
+  height: 55rpx;
+  margin: 0 auto;
+  border-radius:60rpx;
+  border: 4rpx solid #494949;
+}
+.indexInput .indexInput-icon{
+  height: 100%;
+  width: 50rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  float: left;
+}
+.indexInput .indexInput-icon image{
+  height:30rpx;
+}
+.indexInput .indexInput-btn{
+  height: 100%;
+  width: 100rpx;
+  border-radius:60rpx;
+  background-color: #494949;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24rpx;
+  float: right;
+}
+.indexInput view{
+  display: inline-block;
+}
+.user_id{
+  margin-left: 110rpx;
+}

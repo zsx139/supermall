@@ -1,0 +1,57 @@
+/* miniprogram/pages/my/allOrder/index.wxss */
+page{
+  background-color: #F8F8F8;
+}
+.topTab{
+  padding-top: 20rpx;
+  top: 190rpx;
+}
+.tabnav{
+  top:70rpx;
+}
+.particulars_lists{
+  color:#696969;
+}
+.particulars_lists view:nth-child(1){
+  width: 70%;
+}
+.particulars_lists view:nth-child(1) .iconfont{
+  margin:20rpx;
+}
+.particulars_lists view:nth-child(2){
+  width: 30%;
+}
+.particulars_border-bom,.particulars_border-top{
+  border-color:#EFEFEF;
+}
+.particulars_border-bom,.particulars_border-top view:nth-child(1){
+  font-size:24rpx;
+  line-height:60rpx;
+}
+.goods_item .goods_xiangQing .goods_styles .goods_styles_biao{
+  background:none;
+  font-size: 14px;
+  padding: 2px 0;
+}
+.goods_item .goods_xiangQing .goods_num view:nth-child(1){
+  font-weight:none;
+  color: #A1A6BA;
+  font-size: 16px;
+}
+.goods_item .goods_xiangQing .goods_num view:nth-child(1) text:nth-child(1){
+  font-weight:100;  
+  color: #A1A6BA;
+  font-size: 16px;
+}
+.userOrders .orderBtn{
+  width: 100%;
+  background-color: #ffffff;
+}
+
+.userOrders-item{
+  width: 95%;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius:20rpx;
+  overflow: hidden;
+}

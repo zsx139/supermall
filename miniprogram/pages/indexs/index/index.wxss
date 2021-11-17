@@ -1,0 +1,106 @@
+/* miniprogram/pages/index/index.wxss */
+.home-page{
+  /* margin-bottom:560rpx; */
+}
+/* 投影 */
+.box_shadow{
+  box-shadow-bottom: 10px #FFF; 
+  -moz-box-shadow: 0px 4px 16px rgb(196, 186, 186);
+  -webkit-box-shadow: 0px 4px 16px rgb(196, 186, 186);
+  box-shadow-bottom: 5px rgb(196, 186, 186);
+  position: relative;
+}
+.newSwiper{
+  width: 100%;
+  /* position: fixed; */
+  /* top: 160rpx; */
+  left: 0;
+  margin-top:20rpx;
+  /* z-index: 99; */
+}
+.swpView{
+  width: 100%;
+  /* position: fixed; */
+  background-color: #000000;
+  /* top: 210rpx; */
+  z-index: 9;
+}
+.swp_index{
+  /* width: 100%; */
+  position: absolute;
+  top: 390rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index:99999;
+}
+/* 今日推荐 */
+.toDay{
+  width: 100%;
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+  /* transform: translateY(-40rpx); */
+  background-color: #ffffff;
+  padding-bottom: 40rpx;
+  z-index:99999;
+}
+
+.toDay_list{
+  width: 100%;
+}
+
+/* logo共用css */
+.brandLogo{
+  position: relative;
+  margin-bottom: 40rpx;
+}
+.brandLogo image{
+  width: 100%;
+  height: 320rpx;
+}
+.brandLogo .toMore{
+  border: 1px solid #ffffffde;
+  padding: 6px 14px;
+  color: #ffffffc0;
+  font-size:12px;
+  position: absolute;
+  top: 55%;
+  right: 10%;
+}
+.block{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* display: block; */
+}
+.titles{
+  width: 100%;
+  text-align: center;
+}
+.indexInput{
+  width: 95%;
+  height: 60rpx;
+  margin: 0 auto;
+  border-radius:60rpx;
+  border: 4rpx solid #494949;
+}
+.indexInput .indexInput-icon{
+  height: 100%;
+  width: 50rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.indexInput .indexInput-btn{
+  height: 100%;
+  width: 100rpx;
+  border-radius:60rpx;
+  background-color: #494949;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24rpx;
+}
+.indexInput view{
+  display: inline-block;
+}

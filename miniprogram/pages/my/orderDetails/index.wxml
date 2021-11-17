@@ -1,0 +1,65 @@
+<!--pages/my/orderDetails/index.wxml-->
+<nav-bar navbar-data='{{navbarData}}'></nav-bar>
+<view class='son-page' style='margin-top:{{height}}px;height:{{contentHeight}}px;'>
+  <view class="details-xinxi">
+			<view class="details-xinxi-zhuangtai">订单已发货</view>
+			<view class="details-xinxi-wuliu">物流信息：{{orderData.order_sn}} <text bindtap="copy"> 复制</text></view>
+		</view>
+		<view class="details-yonghu">
+			<view class="siteList-item clear">
+				<view class="siteList-item-xinxi">
+					<text>{{orderData.consignee}}</text>
+					<text>（{{orderData.phone_tel}}）</text>
+				</view>
+				<view class="siteList-item-dizhi">
+					<text>{{orderData.address}}</text>
+				</view>
+			</view>
+		</view>
+		<view class="orderList-item">
+			<view wx:for="{{orderData.goods}}" wx:key="item" class="orderList-item-goods clear">
+				<view class="orderList-item-goods-imgs floatLeft centerF">
+					<image src="{{item.goods_image}}" mode="widthFix" class="centerS"></image>
+				</view>
+				<view class="orderList-item-goods-text floatRight">
+					<view class="goods-name">{{item.goods_name}}</view>
+					<view class="goods-xinxi">
+						<view>尺码：<text>{{item.size_name}}</text></view>
+						<view>数量：<text>{{item.goods_number}}</text></view>
+						<view>价格：HK$ <text>{{item.goods_price}}</text></view>
+					</view>
+				</view>
+			</view>
+			<view class="orderList-item-bottom clear">
+				<view class="floatRight">HK$ {{orderData.order_amount}}</view>
+			</view>
+		</view>
+		<view class="orderDetails">
+			<view class="orderDetails-item clear">
+				<text class="floatLeft">商品总额</text>
+				<text class="floatRight"><text class="iconfont icon-HK"></text>{{orderData.order_amount}}</text>
+			</view>
+			<view class="orderDetails-item clear">
+				<text class="floatLeft">运费</text>
+				<text class="floatRight"><text class="iconfont icon-HK"></text>{{orderData.shipping_fee}}</text>
+			</view>
+			<view class="orderDetails-item clear">
+				<text class="floatLeft">优惠</text>
+				<text class="floatRight"><text class="iconfont icon-HK"></text>{{orderData.discount==null?'0.00':orderData.discount}}</text>
+			</view>
+			<view class="orderDetails-item clear">
+				<text class="floatLeft">实付金额</text>
+				<text class="floatRight"><text class="iconfont icon-HK"></text><text class="bolds">{{orderData.order_amount}}</text></text>
+			</view>
+		</view>
+		<view class="orderDetails-message">
+			<view>支付方式：{{orderData.payment_name}}</view>
+			<view>快递方式：{{orderData.ship_name}}</view>
+			<view>订单编号：{{orderData.order_sn}}</view>
+			<view>订单时间：{{orderData.add_time | times}}</view>
+			<!-- <view>发货时间：2021-05-23 10:23:09</view> -->
+		</view>
+		<!-- <view class="orderDetails-button clear">
+			<view class="orderDetails-button-btn floatRight">确认订单</view>
+		</view> -->
+</view>

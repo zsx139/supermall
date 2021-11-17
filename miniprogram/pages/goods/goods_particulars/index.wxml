@@ -1,0 +1,232 @@
+<!--miniprogram/pages/goods/goods_particulars/index.wxml-->
+<nav-bar navbar-data='{{navbarData}}'></nav-bar>
+<view class='son-page' style='margin-top:{{height}}px;'>
+  <!-- <scroll-view class="btns_bottom" style="height:100%;" scroll-y="true"> -->
+      <!-- 轮播 -->
+    <view class="swpView goods_img">
+      <swiper wx:if="{{scrollTop<=1}}" circular='true' current="{{select}}" duration="300" bindchange="activeSw">
+        <swiper-item bindtap="previewImg" data-item="{{item}}" class="swpItem" wx:for="{{imgList}}" wx:key="index">
+          <image data-index="{{index}}" style="width:{{showImgHeight[index].width}}px;height:{{showImgHeight[index].height}}px;" bindload="showImg" src="{{item}}"></image>
+          <!-- <image mode="heightFix" src="{{item}}"></image> -->
+        </swiper-item>
+      </swiper>
+      <!-- wx:if="{{scrollTop>1}}" -->
+      <swiper wx:if="{{scrollTop>1}}" class="newSwiper" circular='true' current="{{select}}" duration="300" bindchange="activeSw">
+        <swiper-item bindtap="previewImg" data-item="{{item}}" class="swpItem" wx:for="{{imgList}}" wx:key="index">
+          <image data-index="{{index}}" style="width:{{showImgHeight[index].width}}px;height:{{showImgHeight[index].height}}px;" bindload="showImg" src="{{item}}"></image>
+          <!-- <image mode="heightFix" src="{{item}}"></image> -->
+        </swiper-item>
+      </swiper>
+      <view class="swp_index">
+        <text wx:for="{{imgList}}" wx:key="index" class="{{select==index?'active':''}}"></text>
+      </view>
+    </view>
+    <view class="goods_text">
+      <view style="text-align: center;">{{goodsData.goods_name}}</view>
+      <view wx:if="{{goodsData.mprice!=null}}">
+        <view class="particulars_lists">
+          <view>欧洲售价：</view>
+          <view>{{goodsData.oz_price}}€</view>
+        </view>
+        <view class="particulars_lists">
+          <view>折合港币：</view>
+          <view>HK${{goodsData.zhrmb}}</view>
+        </view>
+        <view class="particulars_lists">
+          <view>您的HK自取价：</view>
+          <view style="color:var(--theme-color);" class="bolds">
+            <text wx:if="{{goodsData.zhekou != 0}}">{{goodsData.zhekou}}折,</text>
+            <text wx:if="{{goodsData.mprice!=null}}">HK${{goodsData.mprice}}</text>
+          </view>
+        </view>
+        <view class="particulars_lists">
+          <view>约合人民币：</view>
+          <view>￥{{goodsData.zqrmb}}</view>
+        </view>
+        <view wx:if="{{datas.is_admin=='1'}}" class="particulars_lists">
+          <view>含HK清关费合计：</view>
+          <view>HK${{goodsData.price_hyf}}</view>
+        </view>
+        <view wx:if="{{datas.is_admin=='1'}}" class="particulars_lists">
+          <view>HK清关费约合RMB：</view>
+          <view>￥{{goodsData.zqrmb_dgf}}</view>
+        </view>
+      </view>
+      <view class="allLogin" wx:if="{{goodsData.mprice==null}}">登录成为会员后才可以看到商品价格哦</view>
+      <view wx:if="{{storehouseStockInfo.length==0}}" class="particulars_lists">
+        <view style="width:100%;">本商品已售空，请先收藏</view>
+      </view>
+    </view>
+    
+
+    <view class="goodsSize" wx:for="{{storehouseStockInfo}}"  wx:key='index'>
+      <view class="cut-off_rule"></view>
+      <view class="particulars_lists">
+        <view class="bolds">{{item.sh_name}}</view>
+        <view></view>
+      </view>
+      <view class="particulars_lists particulars_size">
+        <view class="size"><text wx:for="{{item.specList}}" wx:key='index'>{{item.size_name}}</text></view>
+        <view bindtap="toUp" data-cang="{{index}}"><text class="btnActive">购买</text></view>
+      </view>
+      <view class="cut-off_rule"></view>
+    </view>
+    <view class="goodsMessage">
+      <view wx:if="{{shipping_day}}" class="particulars_lists">
+        <view>商品ID</view>
+        <view>{{goodsData.goods_id}}</view>
+      </view>
+      <view class="particulars_lists">
+        <view>HK清关费</view>
+        <view class="price">
+          <text>{{goodsData.daigongfei}}\n</text>
+          <text>国内段运费统一顺丰到付</text>
+        </view>
+      </view>
+      <view wx:if="{{shipping_day}}" class="particulars_lists">
+        <view>预计时间</view>
+        <view>{{shipping_day}}</view>
+      </view>
+      <view class="cut-off_rule"></view>
+      <view class="particulars_lists">
+        <view>商品编号</view>
+        <view>{{goodsData.goods_sn}}</view>
+      </view>
+      <view class="particulars_lists">
+        <view>商品色号</view>
+        <view>{{goodsData.sehao}}</view>
+      </view>
+      <view class="particulars_lists">
+        <view>面料</view>
+        <view>{{goodsData.mianliao}}</view>
+      </view>
+      <view class="particulars_lists">
+        <view>商品品牌</view>
+        <view>{{goodsData.brand_name}}</view>
+      </view>
+      <view class="cut-off_rule"></view>
+
+
+      <!-- 商品详情 -->
+      <view class="xiangXiBox">
+        <view class="xiangXiBox_title">商品详情</view>
+        <view class="xiangXiBox_fanGe">
+          <tui-divider size="24" height="20" width="60%" gradual></tui-divider>
+        </view>
+        <view  wx:for="{{imgList}}" wx:key='index' class="xiangXiBox_image">
+          <image bindload="swpInfo"  mode="scaleToFill" data-index="{{ index }}" 
+          style="width:{{ swpHeight[index].width }}rpx; height:{{ swpHeight[index].height }}rpx;" src="{{item}}"></image>
+        </view>
+      </view>
+      <view class="cut-off_rule"></view>
+      <!-- 为你推荐 -->
+      <view class="xiangXiBox">
+        <view class="xiangXiBox_title">为你推荐</view>
+        <view class="xiangXiBox_fanGe">
+          <tui-divider size="24" height="20" width="60%" gradual></tui-divider>
+        </view>
+        <view style="width:{{goodsWidth}}px;" bindtap="_navto" data-url="/pages/goods/goods_particulars/index?goodsid={{item.goods_id}}" wx:for="{{tuiJian}}" wx:key='index' class="goods_list_item">
+          <view class="imgs box_shadow">
+            <image data-index="{{index}}" style="width:{{tuijianImgHeight[index].width}}px;height:{{tuijianImgHeight[index].height}}px;" bindload="tuijianImg" src="{{item.default_image}}"></image>
+          </view>
+          <text class="item_title">{{item.goods_name}}\n</text>
+          <text class="bolds textOver">
+            <text wx:if="{{item.zhekou!=''}}">{{item.zhekou}}折,</text>
+            <text wx:if="{{item.user_price}}">HK${{item.user_price}}</text>
+          </text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 选择数量画面 -->
+    <view bindtap="toUp" class="block {{togwc==true?'fadeInUp':'fadeInDown'}}"></view>
+    <view class="select_box {{togwc==true?'fadeInUp':'fadeInDown'}}">
+        <!-- 商品 -->
+        <view class="goodsXq particulars_border-bom clear">
+          <view class="item_img floatLeft">
+            <image style="width:{{showImgHeight[0].width/4.9}}px;height:{{showImgHeight[0].height/4.9}}px;" src="{{imgList[0]}}"></image>
+          </view>
+          <view class="goodsXq_text floatLeft">
+            <view>{{goodsData.goods_name}}</view>
+            <view>HK${{goodsData.zhrmb}}</view>
+          </view>
+          <!-- <view class="offs"><text bindtap="toUp" class="iconfont icon-chuyidong1-copy"></text></view> -->
+        </view>
+        <!-- 个数 -->
+        <view class="size_num" style="padding-bottom:{{index==storehouseStockInfo.length-1?'120rpx;':'0rpx'}}">{{item.sh_name}}
+          <scroll-view style="height:100%;" scroll-y="true">
+            <view wx:for="{{specList}}" wx:key='index' class="goods_num particulars_border-bom clear">
+              <view class="">{{item.size_name}} <text>现货：{{item.xianhuo_stock}}</text> <text>期货：{{item.stock}}</text></view>
+              <view>
+                <text bindtap="goodsNum" data-num="+" data-index="{{index}}" data-cang="{{item.sh_id}}" data-size_name="{{item.size_name}}" data-stock='{{item.specList[0].xianhuo_stock}}' class="iconfont btnActive icon-jia"></text> <!-- opacitys -->
+                <text>{{item.selected}}</text>
+                <text bindtap="goodsNum" data-num="-" data-index="{{index}}" data-cang="{{item.sh_id}}" data-size_name="{{item.size_name}}" class="iconfont btnActive icon-jianhao"></text>
+              </view>
+            </view>
+          </scroll-view>
+        </view>
+        <!-- btn -->
+        <view class="bottom_btn zIndex center particulars_border-top">
+          <view bindtap="addCar"  class="btns btnActive">
+            <text class="">加入购物车</text>
+            <!-- <view bindtap="_navto" data-url="/pages/shoppingCart/orderForm/index?spec_id='{{}}'" class="btnActive">立即购买</view> -->
+          </view>
+        </view>
+      </view>
+    <!-- 底部按钮 -->
+    <!-- wx:if="{{goodsData.mprice!=null}}" -->
+    <view class="bottom_btn indexBtn clear">
+      <view class="btns floatRight">
+        <view bindtap="getCall" class="btnActive">客服</view>
+        <view bindtap="_navto" data-type="FenXiang" data-url="/pages/share/index?goodsid={{goodsid}}" class="btnActive">分享</view>
+      </view>
+      <view bindtap="collect" class="collect floatRight"><text class="iconfont {{shouCang}}"></text></view>
+    </view>
+    <tui-modal show="{{modalShow}}" bindclick="modalBtn" title="提示" content="登陆后才能收藏哦"></tui-modal>
+  <!-- </scroll-view> -->
+</view>
+<!-- 尺码 -->
+<view class="block tables" style="display:block;margin-top:{{height}}px;height:{{contentHeight}}px;top:{{tops}}px;">
+  <view bindtap="toTable" class="toUp particulars_border-top btnActive"><text class="iconfont icon-triangle-top"></text></view>
+  <scroll-view style="height:100%;" scroll-y="true">
+    <view class="table">
+      <view class="tr bg-w">
+        <view class="th">尺码</view>
+        <view class="th">肩宽</view>
+        <view class="th">胸围</view>
+        <view class="th">衣长</view>
+      </view>
+      <block wx:for="{{listData}}" wx:key="index">
+        <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
+          <view class="td">{{item.size}}</view>
+          <view class="td">{{item.text}}</view>
+          <view class="td">{{item.text}}</view>
+          <view class="td">{{item.text}}</view>
+        </view>
+        <view class="tr bg-k" wx:else>
+          <view class="td">{{item.size}}</view>
+          <view class="td">{{item.text}}</view>
+          <view class="td">{{item.text}}</view>
+          <view class="td">{{item.text}}</view>
+        </view>
+      </block>
+    </view>
+  </scroll-view>
+</view>
+<!-- 客服 -->
+<view hidden="{{keFuCode}}" class="block center">
+    <view class="codeBox">
+      <view class="codeBox_title">
+        <view>VPXYY</view>
+        <view>添加微信，联系您的客户经理</view>
+      </view>
+      <view class="code">
+        <image src="{{getContactQr.data.img_qr}}"></image>
+      </view>
+      <view class="btns">
+        <view bindtap="textPaste">复制微信号</view>
+        <view bindtap="Down">下载二维码</view>
+      </view>
+    </view>
+  </view>
+  <!-- 查看图片 -->

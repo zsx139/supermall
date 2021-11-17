@@ -1,0 +1,24 @@
+<!--miniprogram/pages/indexs/search/index.wxml-->
+<nav-bar navbar-data='{{navbarData}}'></nav-bar>
+<view class='son-page' style='margin-top:{{height}}px;height:{{contentHeight}}px;'>
+  <!-- 搜索 -->
+  <view class="searchs clear">
+    <view class="floatLeft searchInp">
+      <text class="iconfont icon-chakan"></text>
+      <input placeholder="搜索你需要的商品关键词" bindconfirm="searchSubmit" bindinput="bindcall" type="text" value="{{goodsname}}"/>
+    </view>
+    <text bindtap="cancel" class="floatLeft cancel">取消</text>
+  </view>
+  <view wx:if="{{goodsname!=''}}" class="brandItem">
+    <view wx:for="{{brandItem}}" wx:key="index" bindtap="_navto" data-url="/pages/goods/goods_list/index?brand_id={{item.brand_id}}" class="brandItem_item particulars_border-bom">{{item.brand_name}}</view>
+  </view>
+  <!-- 历史 -->
+  <!-- <view wx:if="{{goodsname==''}}">
+    <view class="titles clear">
+      <text class="til_text">搜索历史/推荐</text>
+    </view>
+    <view class="history">
+      <view wx:for="{{history}}" data-text="{{item}}" bindtap="history"  wx:key="index" class="history_item">{{item}}</view>
+    </view>    
+  </view> -->
+</view>

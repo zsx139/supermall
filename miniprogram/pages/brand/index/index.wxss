@@ -1,0 +1,28 @@
+/* miniprogram/pages/brand/index/index.wxss */
+page{
+  background-color: #F6F2EF;
+}
+.brandIndex{
+  height: 100%;
+}
+.home-page{
+  height: 100%;
+}
+.nav{
+  z-index:9999999;
+}
+.search{
+  padding-top:20rpx;
+  background-color: #FFFFFF;
+  transform: translateY(-20rpx);
+}
+.brand_title{
+  margin: 40rpx 0 0 20rpx;
+}
+.brandScroll{
+  height:100%;
+  width: 100%;
+  padding-top: 35rpx;
+  background-color: #FFFFFF;
+  /* margin-top: 66rpx; */
+}

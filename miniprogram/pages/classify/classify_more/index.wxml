@@ -1,0 +1,14 @@
+<!--miniprogram/pages/classify/classify_more/index.wxml-->
+<nav-bar navbar-data='{{navbarData}}'></nav-bar>
+<view class='son-page' style='margin-top:{{height}}px;height:{{contentHeight}}px;'>
+  <scroll-view style="height:100%;" scroll-y="true">
+    <view class="LIst_cls_goods">
+      <view bindtap="_navto" data-url="/pages/goods/goods_list/index" wx:for="{{goodsData}}" wx:key='index' style="width:25%;" class="LIst_cls_item">
+        <view class="item_img">
+          <image src="{{item.icon_img}}"></image>
+        </view>
+        <view class="item_text">{{item.cate_name}}</view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

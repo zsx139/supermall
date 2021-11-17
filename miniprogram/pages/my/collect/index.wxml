@@ -1,0 +1,33 @@
+<!--miniprogram/pages/my/collect/index.wxml-->
+<nav-bar navbar-data='{{navbarData}}'></nav-bar>
+<view class='son-page collectIndex' style='margin-top:{{height}}px;height:{{}}px;'>
+  <!-- <scroll-view style="height:100%;" scroll-y="true"> -->
+    <checkbox-group wx:if="{{goods!=null}}" bindchange="checkboxChange">
+      <view bindtap="_navto" data-url="/pages/goods/goods_particulars/index?goodsid={{item.goods_id}}" wx:for="{{goods}}" wx:key='index' class="goods_item clear">
+         <!-- 这里catchtap绑定空事件防止checkbox的冒泡 -->
+        <checkbox catchtap="preventBubbling" value="{{index}}" checked="{{item.checked}}" class="floatLeft checkboxs"></checkbox>
+        <view style="width:{{windowWidth*0.26}}px;height:{{windowWidth*0.26}}px;overflow: hidden;display: inline-block;">
+          <image data-index="{{ index }}" bindload="imgInfo" style="width:{{ imageSize[index].width }}rpx; height:{{ imageSize[index].height }}rpx;" class="floatLeft" src="{{item.default_image}}"></image>
+        </view>
+        <view class="floatLeft" class="goods_xiangQing">
+          <view class="goods_name">{{item.goods_name}}</view>
+          <view class="goods_styles">
+            <text class="goods_styles_biao">{{item.cate_name}}</text>
+          </view>
+          <view class="goods_num clear">
+            <view>￥<text>{{item.user_price}}</text> <text>￥{{item.price}}</text></view>
+          </view>
+        </view>
+      </view>
+    </checkbox-group>
+    <view wx:if="{{goods==null}}" class="empty">
+      <image src="../../../images/empty/collect.png"></image>
+      <view>收藏夹是空的</view>
+    </view>
+  <!-- </scroll-view> -->
+  <!-- btn -->
+  <view wx:if="{{goods!=null}}" class="close clear particulars_border-top">
+    <checkbox bindtap="allCheckbox" checked='{{allCheckbox}}'>全选</checkbox>
+    <view bindtap="shanCollect" class="carBtn scriptwriterdele btnActive">取消收藏</view>
+  </view>
+</view>

@@ -1,0 +1,11 @@
+/* miniprogram/pages/my/history/index.wxss */
+.titles .til_text{
+  font-size: 16px;
+}
+.goods_num view text:nth-child(2){
+  color: #A1A6BA;
+  text-decoration:line-through;
+  font-size: 12px;
+  display: inline-block;
+  transform: translateX(10px);
+}

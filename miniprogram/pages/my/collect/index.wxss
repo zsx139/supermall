@@ -1,0 +1,47 @@
+/* miniprogram/pages/my/collect/index.wxss */
+.goods_item{
+  padding: 10px;
+}
+.collectIndex{
+  padding-bottom: 250rpx;
+}
+.close{
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left:30rpx;
+  box-sizing: border-box;
+  margin: 0;
+  /* height: 0; */
+}
+.goods_num view text:nth-child(2){
+  color: #A1A6BA;
+  text-decoration:line-through;
+  font-size: 12px;
+  display: inline-block;
+  transform: translateX(10px);
+}
+.close .carBtn{
+  width: 25%;
+  height: 46px;
+  font-size: 14px;
+  border-radius: 50px;
+  transform: translate(-10px,3px);
+}
+.collect{
+  width: 100%;
+  height: 300px;
+  text-align: center;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: #A1A6BA;
+
+}
+.collect image{
+  width: 100px;
+  height: 100px;
+}
+.goods_num view:nth-child(1){
+  width: 100%;
+}
+.goods_item .goods_xiangQing .goods_name{
+  font-size: 25rpx;
+}

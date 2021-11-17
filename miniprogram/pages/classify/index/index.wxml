@@ -1,0 +1,40 @@
+<!--miniprogram/pages/classify/index/index.wxml-->
+<nav-bar navbar-data='{{navbarData}}'></nav-bar>
+<view class="clear" style='margin-top:{{height}}px;'>
+  <!-- leftList -->
+  <view style="" class="leftList box_shadow">
+    <view bindtap="tabNav" wx:for="{{leftLIst}}" data-index="{{index}}" wx:key='index' class="leftList_item {{tabIndex==index?'active':''}}">
+      <!-- <text wx:if="{{tabIndex==index}}" class="tabnavY"></text> -->
+      {{item}}
+    </view>
+  </view>
+  <!-- rightLIst -->
+  <view style="" class="rightLIst">
+    <swiper circular='true' current="{{tabIndex}}" bindchange="activeSw" style="width:100%;height:{{clientHeight}}px;" duration='200'>
+      <swiper-item wx:for="{{classify}}" wx:key='index'>
+        <scroll-view style="height:100%;" scroll-y="true">
+          <view wx:for="{{item.sub}}" data-index="{{index}}" wx:key='index'  class="rightLIst_cls">
+            <!-- rightLIst_title标题 -->
+            <view class="titles clear rightLIst_title"> <!-- rightLIst_title 这里把titles的字体调小点 -->
+              <text class="til_text">{{item.title}}</text>
+              <view class="xiangXiBox_fanGe">
+                <tui-divider size="24" height="20" width="60%" gradual></tui-divider>
+              </view>
+            </view>
+              <view class="LIst_cls_goods">
+                <view bindtap="_navto" data-url="/pages/goods/goods_list/index?cate_id={{item.cate_id}}&goodsCate={{tabIndex}}" wx:for="{{item.data}}" wx:key='index' class="LIst_cls_item">
+                  <view class="item_img">
+                    <image src="{{item.icon_img}}"></image>
+                  </view>
+                  <view class="item_text textOver">{{item.cate_name}}</view>
+                </view>
+              </view>          
+          </view>
+        </scroll-view>
+      </swiper-item>
+    </swiper>
+      
+
+
+  </view>
+</view>

@@ -1,0 +1,3 @@
+<!--miniprogram/pages/shoppingCart/index/index.wxml-->
+<nav-bar navbar-data='{{navbarData}}'></nav-bar>
+<car-index id="carIndex"></car-index>

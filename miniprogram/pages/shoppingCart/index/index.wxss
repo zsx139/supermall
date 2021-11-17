@@ -1,0 +1,66 @@
+/* miniprogram/pages/shoppingCart/index/index.wxss */
+
+.scriptwriterdele{
+  border-radius:50px;
+  border: 1px solid red !important;
+  background-color: #ffffff !important;
+  color: red !important;
+  transform:translateX(-26rpx);
+}
+
+.catIndex{
+  margin-bottom:190rpx;
+}
+
+
+.btns_bottom{
+  padding-bottom:env(safe-area-inset-bottom); /* 这里是底部结账的高度 */
+  box-sizing: border-box;
+}
+
+.empty{
+  width: 100%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.empty .iconfont{
+  color: #71E7CE;
+  display: inline-block;
+  margin-right:20px;
+  font-size: 20px;
+}
+.empty text{
+  color: #9B9B9B;
+  font-size: 14px;
+}
+
+.goods_num view:nth-child(1) text{
+  color: red;
+}
+.TuiJian{
+  width: 100%;
+}
+
+.goods_list_item{
+  margin: 24rpx;
+  width: 42%;
+  height: 400rpx;
+  display: block;
+  float: left;
+}
+.CaoZuo{
+  padding-left: 20rpx;
+  /* margin-bottom:86px; */
+}
+.close{
+  margin-bottom:90rpx;
+  height: 100rpx;
+}
+.xiangXiBox .xiangXiBox_fanGe{
+  width: 100%;
+  height: 17px;
+  margin-bottom: 30rpx;
+}

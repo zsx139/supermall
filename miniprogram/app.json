@@ -1,0 +1,72 @@
+{
+  "pages": [
+    "pages/indexs/index/index",
+    "pages/brand/index/index",
+    "pages/my/allOrder/index",
+    "pages/shoppingCart/index/index",
+    "pages/my/userSet/index",
+    "pages/my/index/index",
+    "pages/shoppingCart/toShoppingCart/index",
+    "pages/goods/goods_list/index",
+    "pages/indexs/search/index",
+    "pages/userLogin/login/index",
+    "pages/my/siteAdmin/index",
+    "pages/my/add&amend-site/index",
+    "pages/my/discounts/index",
+    "pages/my/history/index",
+    "pages/my/collect/index",
+    "pages/goods/goods_particulars/index",
+    "pages/shoppingCart/orderForm/index",
+    "pages/classify/index/index",
+    "pages/userLogin/register/index",
+    "pages/share/index",
+    "pages/my/imgs/index",
+    "pages/classify/classify_more/index",
+    "pages/indexs/callService/index",
+    "components/navbar/index",
+    "components/cart/index",
+    "pages/my/orderDetails/index"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "VERY PEFECT",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "custom": true,
+    "borderStyle": "white",
+    "selectedColor": "#5Ac45A",
+    "list": [
+      {
+        "pagePath": "pages/indexs/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/classify/index/index",
+        "text": "分类"
+      },
+      {
+        "pagePath": "pages/brand/index/index",
+        "text": "品牌"
+      },
+      {
+        "pagePath": "pages/shoppingCart/index/index",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "pages/my/index/index",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2",
+  "usingComponents":{
+    "tui-modal": "components/modal/modal",
+    "tui-divider": "components/divider/divider",
+    "tui-swipe-action": "components/swipe-action/swipe-action"
+  }
+}

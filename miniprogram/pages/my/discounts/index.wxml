@@ -1,0 +1,61 @@
+<!--miniprogram/pages/my/discounts/index.wxml-->
+<nav-bar navbar-data='{{navbarData}}'></nav-bar>
+<view class='son-page' style='margin-top:{{height}}px;height:{{contentHeight}}px;'>
+  <view class="topTab bolds">
+    <text wx:for="{{tabList}}" style="width:{{tabwth}}px;" data-index="{{index}}" wx:key='index' bindtap="tabNav"
+      class="{{tabIndex==index?'active':''}}">{{item}}</text>
+    <view style="left:{{tabNavLeft}}px;" class="tabnav"></view>
+  </view>
+  <view class="tabContent">
+    <swiper current="{{tabIndex}}"  bindchange="activeSw">
+      <swiper-item>
+        <scroll-view style="height:100%;" scroll-y="true">
+          <view class="empty" wx:if="{{discountsData.enabled==null}}">
+            <image src="../../../images/empty/discounts.png"></image>
+            <view>这里的优惠劵是空的</view>
+          </view>
+          <view wx:for="{{discountsData.enabled}}" wx:key='index' class="discounts">
+            <image bindload="swpInfo" style="height:{{swpHeight}}px;" src="https://s3.ax1x.com/2021/02/09/yaW1JS.png"></image>
+            <view class="discounts_text">
+              <view class="discounts_text_title">{{item.coupon_name}}</view>
+              <view class="discounts_text_text">(全店使用)</view>
+              <view class="discounts_text_time">{{item.start_time}}-{{item.end_time}}</view>
+            </view>
+          </view>
+        </scroll-view>
+      </swiper-item>
+      <swiper-item>
+        <scroll-view style="height:100%;" scroll-y="true">
+          <view class="empty" wx:if="{{discountsData.used==null}}">
+            <image src="../../../images/empty/discounts.png"></image>
+            <view>这里的优惠劵是空的</view>
+          </view>
+          <view wx:for="{{discountsData.used}}" wx:key='index' class="discounts">
+            <image bindload="swpInfo" style="height:{{swpHeight}}px;" src="../../../images/YouHuiJuan/YiShiYong.png"></image>
+            <view class="discounts_text">
+              <view class="discounts_text_title">满300减30</view>
+              <view class="discounts_text_text">(全店使用)</view>
+              <view class="discounts_text_time">2018.01.01-2019.01.01</view>
+            </view>
+          </view>
+        </scroll-view>
+      </swiper-item>
+      <swiper-item>
+        <scroll-view style="height:100%;" scroll-y="true">
+          <view class="empty" wx:if="{{discountsData.timeout==null}}">
+            <image src="../../../images/empty/discounts.png"></image>
+            <view>这里的优惠劵是空的</view>
+          </view>
+          <view wx:for="{{discountsData.timeout}}" wx:key='index' class="discounts">
+            <image bindload="swpInfo" style="height:{{swpHeight}}px;" src="../../../images/YouHuiJuan/YiGuoQi.png"></image>
+            <view class="discounts_text">
+              <view class="discounts_text_title">满300减30</view>
+              <view class="discounts_text_text">(全店使用)</view>
+              <view class="discounts_text_time">2018.01.01-2019.01.01</view>
+            </view>
+          </view>
+        </scroll-view>
+      </swiper-item>
+    </swiper>
+  </view>
+</view>

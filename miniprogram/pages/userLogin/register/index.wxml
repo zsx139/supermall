@@ -1,0 +1,52 @@
+<!--miniprogram/pages/userLogin/register/index.wxml-->
+<nav-bar navbar-data='{{navbarData}}'></nav-bar>
+<view class='son-page backgroundColor' style='margin-top: {{height}}px;height:{{contentHeight}}px;'>
+  <scroll-view scroll-y style='height:100%;'>
+    <view style="width:{{windowWidth/2*2}}rpx;height:{{windowWidth/2*2}}rpx;" class="logo">
+      <image src="../../../images/logo/vologo2.png"></image>
+    </view>
+    <view class="loginFrom">
+      <view class="inputSite clear particulars_border-bom">
+        <view class="floatLeft bolds black">用户名</view>
+        <input class="floatLeft" bindinput="user_name" placeholder-class="inplact" placeholder="请输入2-8位的中文或英文" type="text" />
+      </view>
+      <view class="inputSite clear particulars_border-bom">
+        <view class="floatLeft bolds black">手机号</view>
+        <input class="floatLeft" bindinput="phone_tel" placeholder-class="inplact" placeholder="请输入手机号码" type="text" />
+      </view>
+      <view class="inputSite clear particulars_border-bom verify">
+        <view class="floatLeft bolds black">验证码</view>
+        <input class="floatLeft" bindinput="phone_code" placeholder-class="inplact" placeholder="请输入手机验证码" type="text" />
+        <text wx:if="{{toCodeKey==false}}" bindtap="toCode" class="bolds">获取验证码</text>
+        <text wx:if="{{toCodeKey==true}}" class="bolds">{{toCodeTime}}s</text>
+      </view>
+      <view class="inputSite clear particulars_border-bom">
+        <view class="floatLeft bolds black">微信号</view>
+        <input class="floatLeft" placeholder-class="inplact" placeholder="请输入微信号码" type="text" />
+      </view>
+      <view class="inputSite clear particulars_border-bom password">
+        <view class="floatLeft bolds black">密码</view>
+        <input focus="{{noag_name_focus}}" class="floatLeft" bindinput="pwd" value="" placeholder-class="inplact" placeholder="请输入密码" type="{{inpType?'text':'password'}}" />
+        <text bindtap="tosee" data-ag="noag" class="iconfont {{inpType?'icon-yanjing':'icon-biyan1'}}"></text>
+      </view>
+      <view class="inputSite clear particulars_border-bom password">
+        <view class="floatLeft bolds black">确认密码</view>
+        <input focus="{{ag_name_focus}}" class="floatLeft" bindinput="pwd" value="" placeholder-class="inplact" placeholder="请再次输入密码" type="{{agInpType?'text':'password'}}" />
+        <text bindtap="tosee" data-ag="ag" class="iconfont {{agInpType?'icon-yanjing':'icon-biyan1'}}"></text>
+      </view>
+      <view class="inputSite clear particulars_border-bom">
+        <view class="floatLeft bolds black">邀请码</view>
+        <input class="floatLeft" bindinput="syscode" placeholder-class="inplact" placeholder="请输入邀请码，可联系销售获取" type="text" />
+      </view>
+      <view class="inputSite clear particulars_border-bom">
+        <button class='contact-btn' open-type='contact'>点击联系客服</button> 
+      </view>
+
+      <!-- <checkbox class="checkboxs">是否接收推送信息</checkbox> -->
+      <view class="loginBtn">
+        <view bindtap="goRegister" class="toLogin btnActive">立即注册</view>
+        <view bindtap="navback" class="toRegister btnActive">已有账号，去登陆</view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,193 @@
+<!--miniprogram/pages/my/index/index.wxml-->
+<nav-bar navbar-data='{{navbarData}}'></nav-bar>
+<view class='home-page myIndex' style='margin-top:{{height}}px;box-sizing: border-box;'>
+  <!-- <scroll-view style="height:100%;" scroll-y="true"> -->
+    <view class="userMessage">
+      <view class="backgroundImg">
+        <image src="../../../images/background/my.png"></image>
+      </view>  <!-- 因为背景图片不支持绝对路径扎乌里用z-index来代替背景图 -->
+      <view class="backgroundBox clear">
+        <view class="userMessage_name floatLeft clear">
+          <view  class="floatLeft">
+            <image src="../../../images/logo/vologo2.png"></image>
+          </view>
+          <view class="floatLeft">{{userText.data.ucenter.user_name}}<text wx:if="{{userText.data.ucenter.user_name==undefined}}" bindtap="_navto" data-url="/pages/userLogin/login/index">去登陆</text>
+          </view>
+        </view>
+        <view class="userMessage_set floatLeft">
+            <text bindtap="_navto" data-url="/pages/my/userSet/index" class="iconfont icon-shezhi btnActive"></text>
+        </view>
+        <view class="user_list">
+          <view bindtap="_navto" data-url="/pages/my/collect/index" class="user_list_item btnActive">
+            <view>{{myCollect}}</view>
+            <view>我的收藏</view>
+          </view>
+          <!-- <view bindtap="_navto" data-url="/pages/my/history/index" class="user_list_item btnActive">
+            <view>3002</view>
+            <view>我的足迹</view>
+          </view> -->
+          <view bindtap="_navto" data-url="/pages/my/discounts/index" class="user_list_item btnActive">
+            <view>{{discounts}}</view>
+            <view>优惠劵</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="cut-off_rule"></view>
+    <view class="allOrder">
+      <view class="particulars_lists">
+        <!-- <view class="bolds">全部订单</view> -->
+      </view>
+      <view class="allOrder_list">
+        <view bindtap="_navto" data-url="/pages/my/allOrder/index?index=0&allorder={{allorder}}" class="allOrder_list_item btnActive">
+          <!-- <image src="../../../images/order/zhiFu.png"></image> -->
+          <text class="iconfont icon-quanbudingdan"></text>
+          <view>全部</view>
+          <!-- <text style="{{orderCount==''?'display:none;':''}}" class="item_num">{{orderCount.length}}</text> -->
+        </view>
+        <view bindtap="_navto" data-url="/pages/my/allOrder/index?index=1&allorder={{allorder}}" class="allOrder_list_item btnActive">
+          <!-- <image src="../../../images/order/wanChen.png"></image> -->
+          <text class="iconfont icon-daifahuo"></text>
+          <view>待发货</view>
+          <!-- <text style="{{DaiFaHuo==''?'display:none;':''}}" class="item_num">{{DaiFaHuo.length}}</text> -->
+        </view>
+        <view bindtap="_navto" data-url="/pages/my/allOrder/index?index=2&allorder={{allorder}}" class="allOrder_list_item btnActive">
+          <!-- <image src="../../../images/order/shouHuo.png"></image> -->
+          <text class="iconfont icon-yifahuo"></text>
+          <view>已发货</view>
+          <!-- <text style="{{YiFaHuo==''?'display:none;':''}}" class="item_num">{{YiFaHuo.length}}</text> -->
+        </view>
+        <view bindtap="_navto" data-url="/pages/my/allOrder/index?index=3&allorder={{allorder}}" class="allOrder_list_item btnActive">
+          <!-- <image src="../../../images/order/quXiao.png"></image> -->
+          <text class="iconfont icon-yiquxiao"></text>
+          <view>已取消</view>
+          <!-- <text style="{{YiQuXiao==''?'display:none;':''}}" class="item_num">{{YiQuXiao.length}}</text> -->
+        </view>
+      </view>
+    </view>
+    <!-- <view class="userAbility">
+      <view bindtap="_navto" data-url="/pages/my/siteAdmin/index" class="userAbility_item clear">
+        <view class="userAbility_item_icon floatLeft">
+          <text class="iconfont icon-yijianfankui1"></text>
+        </view>
+        <view class="particulars_lists btnActive floatLeft">
+          <view>收货地址</view>
+          <view><text class="iconfont icon-jiantou"></text></view>
+        </view>
+      </view>
+      <view bindtap="qrcodes" class="userAbility_item clear">
+        <view class="userAbility_item_icon floatLeft">
+          <text class="iconfont icon-qr_code"></text>
+        </view>
+        <view class="particulars_lists btnActive floatLeft">
+          <view>我的邀请码</view>
+          <view><text class="iconfont icon-jiantou"></text></view>
+        </view>
+      </view>
+      <view  class="userAbility_item clear">
+        <view class="userAbility_item_icon floatLeft">
+          <text class="iconfont icon-qianbao"></text>
+        </view>
+        <view class="particulars_lists btnActive floatLeft">
+          <view>账户余额</view>
+          <view>HK$<text>{{userCentre.data.account.amount}}</text></view>
+        </view>
+      </view>
+      
+      <view bindtap="_navto" data-url="/pages/my/userSet/index" class="userAbility_item clear">
+        <view class="userAbility_item_icon floatLeft">
+          <text class="iconfont icon-wodeziliao"></text>
+        </view>
+        <view class="particulars_lists btnActive floatLeft">
+          <view>我的资料</view>
+          <view><text class="iconfont icon-jiantou"></text></view>
+        </view>
+      </view>
+      
+      <view class="userAbility_item clear">
+        <view class="userAbility_item_icon floatLeft">
+          <text class="iconfont icon-qipaoshi"></text>
+        </view>
+        <view bindtap="toKeFu" class="particulars_lists floatLeft btnActive">
+          <view>客服中心</view>
+          <view><text class="iconfont icon-jiantou"></text></view>
+        </view>
+      </view>
+    </view> -->
+    <view class="myFunction">
+			<view class="myFunction-title">常用功能</view>
+			<view class="myFunction-box clear">
+				<view class="myFunction-box-item floatLeft yue">
+					<view class="myFunction-box-item-imgs">
+						<text class="iconfont icon-zhanghuyue"></text>
+					</view>
+					<view class="myFunction-box-item-text">余额</view>
+          <view>HK${{userCentre.data.account.amount}}</view>
+				</view>
+        <view  bindtap="_navto" data-url="/pages/my/collect/index" class="myFunction-box-item floatLeft">
+					<view class="myFunction-box-item-imgs">
+						<text class="iconfont icon-shoucangbiaoji"></text>
+					</view>
+					<view class="myFunction-box-item-text">收藏</view>
+				</view>
+        <view bindtap="_navto" data-url="/pages/my/discounts/index" class="myFunction-box-item floatLeft" style="margin-right:0;">
+					<view class="myFunction-box-item-imgs">
+						<text class="iconfont icon-youhuijuan"></text>
+					</view>
+					<view class="myFunction-box-item-text">优惠卷</view>
+				</view>
+        <view bindtap="_navto" data-url="/pages/my/siteAdmin/index" class="myFunction-box-item floatLeft">
+					<view class="myFunction-box-item-imgs">
+						<text class="iconfont icon-navicon-fwdzpz"></text>
+					</view>
+					<view class="myFunction-box-item-text">地址</view>
+				</view>
+				<view bindtap="qrcodes" class="myFunction-box-item floatLeft">
+					<view class="myFunction-box-item-imgs">
+						<text class="iconfont icon-yaoqingma"></text>
+					</view>
+					<view class="myFunction-box-item-text">邀请码</view>
+				</view>
+				<view bindtap="toKeFu" style="margin-right:0;" class="myFunction-box-item floatLeft ">
+					<view class="myFunction-box-item-imgs">
+						<text class="iconfont icon-kefu"></text>
+					</view>
+					<view class="myFunction-box-item-text">客服</view>
+				</view>
+			</view>
+		</view>
+
+
+
+
+
+  <!-- </scroll-view> -->
+  <view hidden="{{keFuCode}}" bindtap="toKeFu" class="block">
+    <view class="codeBox">
+      <view class="codeBox_title">
+        <view>VPXYY</view>
+        <view>添加微信，联系您的客户经理</view>
+      </view>
+      <view class="code">
+        <image src="{{getContactQr.data.img_qr}}"></image>
+      </view>
+      <view class="btns">
+        <view bindtap="textPaste">复制微信号</view>
+        <view bindtap="Down" data-image="{{getContactQr.data.img_qr}}">下载二维码</view>
+      </view>
+    </view>
+  </view>
+  <view hidden="{{qrcode}}" bindtap="qrcodes" class="block">
+    <view class="codeBox">
+      <!-- <view class="codeBox_title">
+        <view>VPXYY</view>
+      </view> -->
+      <!-- <view class="code"> -->
+        <image src="{{qrcodeImg}}"></image>
+      <!-- </view> -->
+      <view class="btns">
+        <view class="qrcode" bindtap="Down" data-image="{{qrcodeImg}}">下载推广码</view>
+      </view>
+    </view>
+  </view>
+</view>

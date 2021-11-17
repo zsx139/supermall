@@ -1,0 +1,194 @@
+<!--miniprogram/pages/my/userSet/index.wxml-->
+<nav-bar navbar-data='{{navbarData}}'></nav-bar>
+<view class='son-page' style='margin-top:{{height}}px;height:1050rpx;'>
+  <scroll-view style="height:100%;" scroll-y="true">
+    <!--
+    <view class="headPortrait">
+      <view data-url="/pages/my/imgs/index" class="particulars_lists">
+        <view class="">头像</view>
+        <view>
+          <view style="height:{{windowWidth*0.189}}px;" class="userImg">
+            <image src="../../../images/logo/vologo2.png"></image>
+          </view><text class="iconfont icon-jiantou"></text>
+        </view>
+      </view>
+    </view>
+    <view class="cut-off_rule"></view>
+    <view class="user_message">
+      <view bindtap="" data-function="amendNmae" data-title="更改用户名" class="particulars_lists particulars_border-bom">
+        <view>昵称</view>
+        <view>{{userText.data.ucenter.user_name}}</view>
+      </view>
+      <view bindtap="" data-function="toverifyPhone" data-title="更换手机号" class="particulars_lists particulars_border-bom">
+        <view>手机号</view>
+        <view>{{userText.data.ucenter.phone_tel}}</view>
+      </view>
+      <view bindtap="_navto" data-url="/pages/my/siteAdmin/index" class="particulars_lists particulars_border-bom btnActive">
+        <view>地址管理</view>
+        <view><text class="iconfont icon-jiantou"></text></view>
+      </view>
+      <view bindtap="toUp" data-function="amendPassword" data-title="修改密码" class="particulars_lists particulars_border-bom btnActive">
+        <view>修改密码</view>
+        <view><text class="iconfont icon-jiantou"></text></view>
+      </view>
+    </view>
+    <view class="cut-off_rule"></view>
+    <view bindtap="secede" class="backLogin btnActive particulars_border-bom">退出登录</view>
+    -->
+
+    <view class="head">
+      <view class="head_box">
+        <view class="head_box_img centerF">
+          <image class="centerS" src="../../../images/logo/vologo2.png" mode="widthFix"></image>
+        </view>
+        <view class="head_box_name">{{userText.data.ucenter.user_name}}</view>
+      </view>
+    </view>
+    <view class="myData">
+			<view class="myData_item clear texts">
+				<view class="myData_item_zhu clear floatLeft">
+					<view class="myData_item_zhu_text">
+						用户 ID
+					</view>
+				</view>
+				<view class="myData_item_to floatLeft">
+					<text>{{userText.data.ucenter.user_id}}</text>
+          <!-- @click="copy(userText.data.ucenter.user_id)" -->
+					<text bindtap="copy" class="toCopy btnActive" >复制</text>
+				</view>
+			</view>
+			<view class="myData_item clear texts">
+				<view class="myData_item_zhu clear floatLeft">
+					<view class="myData_item_zhu_text">
+						性别
+					</view>
+				</view>
+				<view class="myData_item_to floatLeft">
+					<text>{{userText.data.ucenter.gender=='0'?'男':'女'}}</text>
+				</view>
+			</view>
+			<view  class="myData_item clear texts">
+				<view class="myData_item_zhu clear floatLeft">
+					<view class="myData_item_zhu_text">
+						手机号
+					</view>
+				</view>
+				<view class="myData_item_to floatLeft">
+					<text>{{userText.data.ucenter.phone_tel}}</text>
+				</view>
+			</view>
+			<view class="myData_item clear texts border0">
+				<view class="myData_item_zhu clear floatLeft">
+					<view class="myData_item_zhu_text">
+						出生日期
+					</view>
+				</view>
+				<view class="myData_item_to floatLeft">
+					<text>{{userText.data.ucenter.birthday}}</text>
+				</view>
+			</view>
+		</view>
+
+    <view class="myData">
+			<view bindtap="_navto" data-url="/pages/my/siteAdmin/index" class="myData_item clear texts btnActive">
+				<view class="myData_item_zhu clear floatLeft">
+					<view class="myData_item_zhu_text">
+						地址管理
+					</view>
+				</view>
+				<view class="myData_item_to floatRight">
+					<text class="iconfont icon-jiantou"></text>
+				</view>
+			</view>
+      <view bindtap="toUp" data-function="amendPassword" data-title="修改密码" class="myData_item clear texts btnActive border0">
+				<view class="myData_item_zhu clear floatLeft">
+					<view class="myData_item_zhu_text">
+						修改密码
+					</view>
+				</view>
+				<view class="myData_item_to floatRight">
+					<text class="iconfont icon-jiantou"></text>
+				</view>
+			</view>
+    </view>
+    <view bindtap="modalKey" class="myData myData_btn btnActive">
+			<view class="myData_item border0">
+				退出登录
+			</view>
+		</view>
+    <tui-modal show="{{modalShow}}" bindclick="modalBtn" title="提示" content="确定退出登录吗？"></tui-modal>
+    <view style="width:{{windowWidth}}px;" bindtap="toUp" class="block {{togwc==true?'fadeInUp':'fadeInDown'}}"></view>
+    <view style="width:{{windowWidth}}px;height:{{contentHeight-80}}px;" class="select_box clear {{togwc==true?'fadeInUp':'fadeInDown'}}">
+        <view class="offs">{{amendTitle}}<text bindtap="toUp" class="iconfont icon-chuyidong1-copy"></text></view>
+        <view wx:if="{{amendTitle=='更改用户名'}}">
+          <view class="Inp clear particulars_border-bom">
+            <view class="floatLeft">用户名</view>
+            <input class="floatLeft" bindinput="bindcallName" value="{{userName}}" type="text" />
+            <view bindtap="resetInput" wx:if="{{userName!=''}}" class="floatLeft"><text class="iconfont icon-Iconinfoicon-"></text></view>
+          </view>
+          <view class="cut-off_rule">4-20个字符，可有中英文、数字、（提供文案也可以省略）</view>
+        </view>
+        <view wx:if="{{amendTitle=='更换手机号'}}">
+          <view wx:if="{{verification==true}}">
+            <view class="Inp particulars_border-bom clear">
+              <view class="floatLeft">验证码</view>
+              <input class="floatLeft" bindinput="bindcallVerify" value="{{verifyNum}}" type="text" />
+              <view class="floatLeft">
+                <text bindtap="toverify" wx:if="{{verify}}" class="verify">获取验证码</text>
+                <text bindtap="" wx:if="{{verify==false}}" class="wait">已发送({{verifyCountDown}}s)</text>
+              </view>
+            </view>
+            <view class="cut-off_rule">验证当前绑定手机号 <text>{{baoMiPhone}}</text></view>
+          </view>
+          <view wx:if="{{verification==false}}">
+            <view class="Inp particulars_border-bom clear">
+              <view bindtap="tohomeLocation" class="floatLeft">
+                +{{homeLocation}}
+                <text class="iconfont black icon-sort_desc"></text>
+              </view>
+              <input class="floatLeft" bindinput="bindcall" value="{{phoneNumber}}" type="text" />
+              <view class="floatLeft">
+              </view>
+            </view>
+            <view class="Inp particulars_border-bom clear">
+              <view class="floatLeft">验证码</view>
+              <input class="floatLeft" bindinput="bindcallVerify" value="{{verifyNum}}" type="text" />
+              <view class="floatLeft">
+                <text bindtap="toverify" wx:if="{{verify}}" class="verify">获取验证码</text>
+                <text bindtap="toverify" wx:if="{{verify==false}}" class="wait">已发送({{verifyCountDown}}s)</text>
+              </view>
+            </view>
+            <view class="cut-off_rule">更新后，下次可用新手机号登陆</view>
+          </view>
+        </view>
+
+        <view wx:if="{{amendTitle=='修改密码'}}">
+          <view class="Inp clear particulars_border-bom">
+            <view class="floatLeft">原密码</view>
+            <input class="floatLeft" placeholder-class="inplact" placeholder="请输入原始密码" bindinput="oldPassWord" value="{{oldPassWords}}" type="text" />
+          </view>
+          <view class="Inp clear particulars_border-bom">
+            <view class="floatLeft">新密码</view>
+            <input class="floatLeft" placeholder-class="inplact" placeholder="6-16位数字或字母" bindinput="bindcallPassWord" value="{{passWord}}" type="password" />
+          </view>
+          <view class="cut-off_rule"></view>
+          <view class="Inp clear particulars_border-bom">
+            <view class="floatLeft">确认密码</view>
+            <input class="floatLeft" placeholder-class="inplact" placeholder="再次填写新密码" bindinput="bindcallNotarizePassWord" value="{{NotarizePassWord}}" type="password" />
+          </view>
+        </view>
+
+        <view bindtap="{{toFunction}}" class="btn btnActive">确定</view>
+
+        <view wx:if="{{tohomeLocation}}" class="homeLocation">
+          <scroll-view style="height:100%;" scroll-y="true">
+            <radio-group bindchange="radioChange">
+              <view bindtap="tohomeLocation" wx:for="11111111" wx:key='index' class="particulars_lists">
+                  <radio value="8{{index}}">+8{{index}}</radio>
+              </view>
+            </radio-group>
+          </scroll-view>
+        </view>
+      </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,152 @@
+<!--miniprogram/pages/my/allOrder/index.wxml-->
+<nav-bar navbar-data='{{navbarData}}'></nav-bar>
+<view class='son-page' style='margin-top:{{height}}px;height:{{contentHeight}}px;'>
+  <view class="topTab bolds">
+    <text wx:for="{{tabList}}" style="width:{{tabwth}}px;" data-index="{{index}}" wx:key='index' bindtap="tabNav" 
+    class="{{tabIndex==index?'active':''}}">{{item}}</text>
+    <view style="left:{{tabNavLeft}}px;" class="tabnav"></view>
+  </view>
+  <view class="tabContent">
+    <swiper current="{{tabIndex}}" duration='200'  bindchange="activeSw">
+      <!-- 全部 -->
+      <swiper-item>
+        <view wx:if="{{orderList==''}}" class="empty">
+          <!-- <image src="../../../images/empty/order.png"></image> -->
+          <view>您还没有相关订单...</view>
+        </view>
+        <scroll-view bindscrolltolower="onReachBottom" wx:if="{{true}}" style="height:100%;" scroll-y="true">
+          <view class="userOrders">
+            <view class="userOrders-item" wx:for="{{orderList}}" wx:key='index' bindtap="_navto" data-url="/pages/my/orderDetails/index?payForTheOrder=false&orderid={{item.order_id}}">
+              <!-- bindsuccess -->
+              <view wx:if="{{index!=0}}" class="cut-off_rule"></view>
+              <view class="particulars_lists particulars_border-bom">
+                <view>订单编号：<text>{{item.order_sn}}</text> <text catchtap="copySn" data-ordersn="{{item.order_sn}}" class="iconfont icon-fuzhi"></text></view>
+                <view>{{item.order_status_name}}</view>
+              </view>
+              <view wx:for="{{item.goods}}" wx:key='index' class="goods_item clear"> 
+                <!-- bindtap="_navto" data-url="/pages/goods/goods_particulars/index?goodsid={{item.goods_id}}" -->
+                <view>
+                  <image data-index="{{ index }}" bindload="imgInfo" class="floatLeft" src="{{item.ggoods_image}}"></image>
+                </view>
+                <view class="goods_xiangQing floatLeft">
+                  <view class="goods_name">{{item.goods_name}}</view>
+                  <view class="goods_styles">
+                    <text class="goods_styles_biao">数量x<text>{{item.goods_number}}</text></text>
+                  </view>
+                  <view class="goods_num clear">
+                    <view class="black">HK$<text class="black bolds">{{item.goods_price}}</text></view>
+                  </view>
+                </view>
+              </view>
+              <view class="successBtn particulars_border-top clear">
+                <view class="floatLeft">订单总额：HK${{item.order_amount}}</view>
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+      </swiper-item>
+      <!-- 待发货 -->
+      <swiper-item>
+        <view wx:if="{{orderList==''}}" class="empty">
+          <!-- <image src="../../../images/empty/order.png"></image> -->
+          <view>您还没有相关订单...</view>
+        </view>
+        <scroll-view bindscrolltolower="onReachBottom" wx:if="{{true}}" style="height:100%;" scroll-y="true">
+          <view class="userOrders">
+            <view class="userOrders-item" wx:for="{{orderList}}" wx:key='index' bindtap="_navto" data-url="/pages/my/orderDetails/index?payForTheOrder=false&orderid={{item.order_id}}">
+              <view wx:if="{{index!=0}}" class="cut-off_rule"></view>
+              <view class="particulars_lists particulars_border-bom">
+                <view>订单编号：<text>{{item.order_sn}}</text> <text catchtap="copySn" data-ordersn="{{item.order_sn}}" class="iconfont icon-fuzhi"></text></view>
+                <view>{{item.order_status_name}}</view>
+              </view>
+              <view wx:for="{{item.goods}}" wx:key='index' class="goods_item clear">
+                <image class="floatLeft" src="{{item.ggoods_image}}"></image>
+                <view class="goods_xiangQing floatLeft">
+                  <view class="goods_name">{{item.goods_name}}</view>
+                  <view class="goods_styles">
+                    <text class="goods_styles_biao">数量x<text>{{item.goods_number}}</text></text>
+                  </view>
+                  <view class="goods_num clear">
+                    <view class="black">HK$<text class="black bolds">{{item.goods_price}}</text></view>
+                  </view>
+                </view>
+              </view>
+              <view class="successBtn particulars_border-top clear">
+                <view class="floatLeft">订单总额：HK${{item.order_amount}}</view>
+              
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+      </swiper-item>
+      <!-- 已发货 -->
+      <swiper-item>
+        <view wx:if="{{orderList==''}}" class="empty">
+          <!-- <image src="../../../images/empty/order.png"></image> -->
+          <view>您还没有相关订单...</view>
+        </view>
+        <scroll-view bindscrolltolower="onReachBottom" wx:if="{{true}}" style="height:100%;" scroll-y="true">
+          <view class="userOrders">
+            <view class="userOrders-item" wx:for="{{orderList}}" wx:key='index' bindtap="_navto" data-url="/pages/my/orderDetails/index?payForTheOrder=false&orderid={{item.order_id}}">
+              <view wx:if="{{index!=0}}" class="cut-off_rule"></view>
+              <view class="particulars_lists particulars_border-bom">
+                <view>订单编号：<text>{{item.order_sn}}</text> <text catchtap="copySn" data-ordersn="{{item.order_sn}}" class="iconfont icon-fuzhi"></text></view>
+                <view>{{item.order_status_name}}</view>
+              </view>
+              <view wx:for="{{item.goods}}" wx:key='index' class="goods_item clear">
+                <image class="floatLeft" src="{{item.ggoods_image}}"></image>
+                <view class="goods_xiangQing floatLeft">
+                  <view class="goods_name">{{item.goods_name}}</view>
+                  <view class="goods_styles">
+                    <text class="goods_styles_biao">数量x<text>{{item.goods_number}}</text></text>
+                  </view>
+                  <view class="goods_num clear">
+                    <view class="black">HK$<text class="black bolds">{{item.goods_price}}</text></view>
+                  </view>
+                </view>
+              </view>
+              <view class="successBtn particulars_border-top clear">
+                <view class="floatLeft">订单总额：HK${{item.order_amount}}</view>
+               
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+      </swiper-item>
+      <!-- 已取消 -->
+      <swiper-item>
+        <view wx:if="{{orderList==''}}" class="empty">
+          <!-- <image src="../../../images/empty/order.png"></image> -->
+          <view>您还没有相关订单...</view>
+        </view>
+        <scroll-view bindscrolltolower="onReachBottom" wx:if="{{true}}" style="height:100%;" scroll-y="true">
+          <view class="userOrders">
+            <view class="userOrders-item" wx:for="{{orderList}}" wx:key='index' bindtap="_navto" data-url="/pages/my/orderDetails/index?payForTheOrder=false&orderid={{item.order_id}}">
+              <view wx:if="{{index!=0}}" class="cut-off_rule"></view>
+              <view class="particulars_lists particulars_border-bom">
+                <view>订单编号：<text>{{item.order_sn}}</text> <text catchtap="copySn" data-ordersn="{{item.order_sn}}" class="iconfont icon-fuzhi"></text></view>
+                <view>{{item.order_status_name}}</view>
+              </view>
+              <view wx:for="{{item.goods}}" wx:key='index' class="goods_item clear">
+                <image class="floatLeft" src="{{item.ggoods_image}}"></image>
+                <view class="goods_xiangQing floatLeft">
+                  <view class="goods_name">{{item.goods_name}}</view>
+                  <view class="goods_styles">
+                    <text class="goods_styles_biao">数量x<text>{{item.goods_number}}</text></text>
+                  </view>
+                  <view class="goods_num clear">
+                    <view class="black">HK$<text class="black bolds">{{item.goods_price}}</text></view>
+                  </view>
+                </view>
+              </view>
+              <view class="successBtn particulars_border-top clear">
+                <view class="floatLeft">订单总额：HK${{item.order_amount}}</view>
+               
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+      </swiper-item>
+    </swiper>
+  </view>
+</view>

@@ -1,0 +1,47 @@
+<!--miniprogram/pages/my/history/index.wxml-->
+<nav-bar navbar-data='{{navbarData}}'></nav-bar>
+<view class='son-page' style='margin-top:{{height}}px;height:{{clientHeight}}px;'>
+  <scroll-view style="height:100%;" scroll-y="true">
+    <view wx:if="{{false}}" class="empty">
+      <image src="../../../images/empty/collect.png"></image>
+      <view>暂无足迹</view>
+    </view>
+    <!-- 今天 -->
+    <view class="toDay">
+      <view class="titles clear">
+        <text class="til_text">今日</text>
+      </view>
+      <view bindtap="_navto" data-url="/pages/goods/goods_particulars/index" wx:for="go" wx:key='index' class="goods_item clear">
+        <image class="floatLeft" src="../../../images/service/code.png"></image>
+        <view class="goods_xiangQing floatLeft">
+          <view class="goods_name">Alyx 新款黑色机能扣单肩小书包披肩带</view>
+          <view class="goods_styles">
+            <text class="goods_styles_biao">单肩包</text>
+          </view>
+          <view class="goods_num clear">
+            <view>￥<text>59.00</text> <text>￥499.00</text></view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 昨天 -->
+    <view class="lastDay">
+      <view class="titles clear">
+        <text class="til_text">昨天</text>
+      </view>
+      <view bindtap="_navto" data-url="/pages/goods/goods_particulars/index" wx:for="go" wx:key='index' class="goods_item clear">
+        <image class="floatLeft" src="../../../images/service/code.png"></image>
+        <view class="goods_xiangQing floatLeft">
+          <view class="goods_name">Alyx 新款黑色机能扣单肩小书包披肩带</view>
+          <view class="goods_styles">
+            <text class="goods_styles_biao">单肩包</text>
+          </view>
+          <view class="goods_num clear">
+            <view>￥<text>59.00</text> <text>￥499.00</text></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+

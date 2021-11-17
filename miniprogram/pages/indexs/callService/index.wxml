@@ -1,0 +1,17 @@
+<!--miniprogram/pages/indexs/callService/index.wxml-->
+<nav-bar navbar-data='{{navbarData}}'></nav-bar>
+<view class='son-page' style='margin-top:{{height}}px;height:{{clientHeight}}px;'>
+  <view class="serviceTab topTab">
+    <text wx:for="{{serviceList}}" wx:key='index' data-index="{{index}}" bindtap="tabNav" class="service_item {{tabIndex==index?'active':''}}">{{item}}</text>
+    <!-- <text class="service_item">微信客服2</text> -->
+    <view style="left:{{tabNavLeft}}px;" class="tabnav"></view>
+  </view>
+  <view class="serviceContent contTop">
+    <!-- <view class="codeText">
+      <image src="../../../images/service/code.png"></image>
+      <view>微信客服号：weixinhao1</view>
+      <view>微信客服名：XYY客服1</view>
+    </view> -->
+    
+  </view>
+</view>

@@ -1,0 +1,75 @@
+/* miniprogram/pages/indexs/search/index.wxss */
+.home-page {
+  width: 100%;
+  font-size: 30rpx;
+  padding-bottom: env(safe-area-inset-bottom);
+  margin-bottom:45px;
+}
+/* 搜索框 */
+.searchs{
+  width: 100%;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+.searchs .searchInp{
+  width: 85%;
+  height: 30px;
+  background-color: #F5F5F5;
+  border-radius: 3px;
+  padding-left:30px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.searchs .searchInp input{
+  width: 100%;
+  height: 100%;
+  font-size:28rpx;
+  color: #000000;
+}
+.searchs .cancel{
+  width: 15%;
+  text-align: center;
+  padding-left:5px;
+  line-height:30px;
+  box-sizing: border-box;
+  font-size:28rpx;
+}
+.searchs .searchInp .icon-chakan{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 7px;
+}
+.clear:after{
+  content: "";
+	display: block;
+  clear: both;
+}
+/* 历史 */
+.history{
+  width: 100%;
+  padding: 0 10px;
+  box-sizing: border-box;
+  font-size: 24rpx;
+}
+.til_text{
+  font-size: 28rpx !important;
+}
+.history .history_item{
+  display: inline-block;
+  padding: 7px 15px;
+  background-color: #F5F5F5;
+  margin-right:15px;
+  margin-bottom:15px;
+}
+.brandItem{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 40rpx;
+  margin-top:40rpx;
+  font-size: 30rpx;
+}
+.brandItem .brandItem_item{
+  padding: 10rpx 0;
+}
