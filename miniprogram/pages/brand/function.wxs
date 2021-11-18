@@ -1,0 +1,7 @@
+// function.wxs
+var arrayfind = function (arr, string) { 
+  if (arr.toLowerCase() !== undefined) { 
+  return arr.toLowerCase().indexOf(string.toLowerCase()) } else return -1
+  }
+  module.exports.arrayfind = arrayfind ; 
+  

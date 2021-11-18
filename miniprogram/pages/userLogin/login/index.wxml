@@ -1,5 +1,5 @@
 <!--miniprogram/pages/userLogin/login/index.wxml-->
-<!-- goLogin -->
+<!-- tui -->
 <nav-bar navbar-data='{{navbarData}}'></nav-bar>
 <view class='son-page backgroundColor' style='margin-top: {{height}}px;height:{{contentHeight}}px;'>
   <view class="backgroundBox">
@@ -26,5 +26,6 @@
         </view>
       </view>
     </view>
+    <tui-tips id="toast" backgroundColor="#5677fc" color="#fff" size="{{30}}"></tui-tips>
   </view>
 </view>

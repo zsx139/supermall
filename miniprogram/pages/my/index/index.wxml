@@ -8,8 +8,9 @@
       </view>  <!-- 因为背景图片不支持绝对路径扎乌里用z-index来代替背景图 -->
       <view class="backgroundBox clear">
         <view class="userMessage_name floatLeft clear">
-          <view  class="floatLeft">
-            <image src="../../../images/logo/vologo2.png"></image>
+        <!--  -->
+          <view class="floatLeft centerF">
+            <image class="centerS" src="{{userText.data.ucenter.avatar?userText.data.ucenter.avatar:'../../../images/logo/vologo2.png'}}" mode="widthFix"></image>
           </view>
           <view class="floatLeft">{{userText.data.ucenter.user_name}}<text wx:if="{{userText.data.ucenter.user_name==undefined}}" bindtap="_navto" data-url="/pages/userLogin/login/index">去登陆</text>
           </view>

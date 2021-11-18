@@ -1077,7 +1077,7 @@ height: 56rpx !important;
 .search{
   width: 100%;
   text-align: center;
-  height: 52rpx;
+  /* height: 52rpx; */
   color: #9D9D9D;
   position: fixed;
   top: 0;

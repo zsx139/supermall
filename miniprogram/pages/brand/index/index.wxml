@@ -1,5 +1,6 @@
 <!--miniprogram/pages/brand/index/index.wxml navHeight-->
 <nav-bar navbar-data='{{navbarData}}'></nav-bar>
+<wxs module="tools" src="../function.wxs"></wxs>
 <view class='home-page' style='margin-top:{{height}}px;height:{{clientHeight}}px;box-sizing: border-box;'>
   <view style="top:{{height}}px;" class="search home">
     <input wx:if="{{zimuKey==false}}" class="inputs" bindinput="bindcall" placeholder="搜索{{zimuIndex}}" value="{{brandname}}" placeholder-class="inp_place" type="text" />
@@ -19,10 +20,13 @@
         <view class="brand_text">{{item.name}}</view>
       </view>
     </view>
+    <!-- brandItem -->
     <view wx:for="{{brandsList}}" wx:key="index" class="brand_item">
-      <view class="letter {{index=='其它'?'z0':index}}" id="{{index=='其它'?'z0':index}}">{{index}}</view>
+      <view class="letter {{index=='其它'?'z0':index}}" hidden="{{brandname!=''}}" id="{{index=='其它'?'z0':index}}">{{index}}</view>
       <view wx:for="{{item}}" wx:key="index" id="{{item.brand_name}}"  bindtap="_navto" data-url="/pages/goods/goods_list/index?brand_id={{item.brand_id}}"
-       class="brand_item_brand btnActive {{twiId=='{{item.brand_name}}'?'twinkle':''}}">{{item.brand_name}}</view>
+       class="brand_item_brand btnActive {{twiId=='{{item.brand_name}}'?'twinkle':''}}" 
+       wx:if="{{tools.arrayfind(item.brand_name,brandname)!==-1}}"
+       >{{item.brand_name}}</view>
     </view>
   </scroll-view>
   <view class="nav" style="margin-top:{{height+20}}px;">

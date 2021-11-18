@@ -39,7 +39,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.getBrand()
   },
 
   /**
@@ -62,12 +62,8 @@ Page({
 		this.setData({
 			goodsname:brand
     })
-    util.post({
-      url:'index.php/Smallapp/Index/brandList',
-      success:res=>{
         var brandItem = []
-        var brandsList = res.data.data.brandsList
-        var recommend = res.data.data.recommend
+        var brandsList = this.data.brandsList
         for (const key in brandsList) {
           for (const keys in brandsList[key]) {
             if (brandsList[key][keys].brand_name.toLowerCase().indexOf(brand.toLowerCase()) != -1) {
@@ -78,9 +74,19 @@ Page({
             }
           }
         }
-        // console.log(brandItem)
         this.setData({
           brandItem:brandItem
+        })
+  },
+  getBrand(){
+    util.post({
+      url:'index.php/Smallapp/Index/brandList',
+      success:res=>{
+        var brandItem = []
+        var brandsList = res.data.data.brandsList
+        this.setData({
+          brandItem:brandItem,
+          brandsList:brandsList
         })
       }
     })
@@ -98,9 +104,10 @@ Page({
     })
   },
   cancel(){
-    this.setData({
-			goodsname:''
-    })
+    // this.setData({
+		// 	goodsname:''
+    // })
+    wx.navigateBack()
   },
     /* 跳转 */
     _navto(e){

@@ -121,7 +121,7 @@ Page({
             query.select('.'+that.data.zimu_list[index]).boundingClientRect()
             query.selectViewport().scrollOffset()
             query.exec(function(res){
-              console.log(res)
+    
             })
           that.setData({
             zimuTop:that.data.zimu_list[index],
@@ -162,24 +162,14 @@ Page({
   bindcall(e){
     var brand = e.detail.value;
     var sousuo = {}
+    var arr = []
     var brandsList = this.data.brands
-    for (const key in brandsList) {
-      for (const keys in brandsList[key]){
-        if (brandsList[key][keys].brand_name.toLowerCase().indexOf(brand.toLowerCase()) != -1) {
-          // console.log(brandsList[key][keys].brand_name)
-          sousuo[key] = brandsList[key]
-          sousuo[key] = {}
-          sousuo[key][keys] = brandsList[key][keys]
-          sousuo[key][keys].brand_name = brandsList[key][keys].brand_name
-          // console.log(sousuo)
-        }
-      }
-      
-    }
-    // console.log(sousuo)
+   
+    console.log(brand)
+
     this.setData({
       brandname:brand,
-      brandsList:sousuo
+      // brandsList:sousuo
     })
     if(brand == ''){
       this.setData({
@@ -203,7 +193,6 @@ Page({
     })
     this.getBrand()
 
-   
   },
 
   /**
@@ -257,7 +246,6 @@ Page({
           }
         }
         
-
         that.setData({
           brandsList:brandsList,
           brands:brandsList,
@@ -266,14 +254,12 @@ Page({
           zimu_list:zm,
         })
         // console.log(123)
-        
         for (const key in this.data.brandsList) {
           if(key!='其它'){
             const query = wx.createSelectorQuery()
             query.select('.'+key).boundingClientRect()
             query.selectViewport().scrollOffset()
             query.exec(function(res){
-              // + 26
               var keyTop = res[0].top
               that.data.ScrollViewKeyTop.push(keyTop)
               that.setData({

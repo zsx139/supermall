@@ -12,7 +12,6 @@ Page({
       showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
       title: 'VERY PEFECT', //导航栏 中间的标题
       scrollTop:50
-
     },
     height: getApp().globalData.height * 2 + 20 ,  // 此页面 页面内容距最顶部的距离
     clientHeight: getApp().globalData.clientHeight-45-(getApp().globalData.height * 2 + 20), // 视口高度 这里-80是减去底部tabBar的高度-40是底部tabBar的高度
@@ -195,10 +194,11 @@ Page({
         this.setData({
           userText:res.data
         })
-        // console.log(this.data.userText)
+        console.log(this.data.userText)
       }
     })
   },
+
   userZongXing(){
     util.post({
       url:'index.php/Smallapp/Index/ucenter',

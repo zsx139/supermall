@@ -7,7 +7,7 @@ const devicePixelRatio = device.pixelRatio
 const height = device.windowHeight - 70
 const fs = width / 750 * 2
 Page({
-  /** myCollect
+  /** _navto
    * 页面的初始数据
    */
   data: {
@@ -98,6 +98,12 @@ Page({
     //刷新画面
     this.wecropper.updateCanvas()
     this.userXinXi()
+    var pages = getCurrentPages();
+    var currPage = pages[pages.length - 1];
+    console.log(currPage.__data__.mydata);//此处既是上一页面传递过来的值
+    if(currPage.__data__.mydata){
+      this.upImg(currPage.__data__.mydata.tempFilePath)
+    }
   },
 
   /**
@@ -333,11 +339,11 @@ Page({
         var str1 = res.data.data.ucenter.phone_tel
         var reg = /^(\d{3})\d*(\d{4})$/;
         var str2 = str1.replace(reg,'$1****$2')
+        console.log(res.data)
         this.setData({
           userText:res.data,
           baoMiPhone:str2
         })
-        // console.log(this.data.userText)
       }
     })
   },
@@ -383,6 +389,43 @@ Page({
         modalShow:true
       })
     }
-    
-  }
+  },
+  gainImg(){
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['camera','album'], // 这要注意，camera掉拍照，album是打开手机相册
+      success: (res)=> {
+        console.log(res.tempFilePaths[0]);
+        // this._navto('/pages/my/imgs/index?imgSrc='+res.tempFilePaths[0])
+        wx.navigateTo({
+          url:'/pages/my/imgs/index?imgSrc='+res.tempFilePaths[0]+'&userid='+this.data.userText.data.ucenter.user_id,
+        })
+        // this.upImg(res.tempFilePaths[0])
+      }
+    });
+  },
+  upImg(filePath){
+    console.log(this.data.userText.data.ucenter)
+    wx.uploadFile({
+      url: 'https://www.vpxyy.com/index.php/Smallapp/Index/uploadAvatar',
+      filePath: filePath,
+      file:filePath,
+      name: 'imgFile',
+      formData: {
+        'user_id': '6603'
+      },
+      header:{
+        'whoareyou':1,
+        'VPToken':getApp().getUserToken(),
+      },
+      success:(res)=>{
+        var uploadFileRes = JSON.parse(res.data)
+        console.log(uploadFileRes.url);
+        if(uploadFileRes.url){
+          util.showMessage('修改成功')
+        }
+      }
+    })
+  },
 })

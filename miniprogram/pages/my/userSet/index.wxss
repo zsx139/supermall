@@ -2,6 +2,9 @@
 page{
   background-color: #F6F2EF;
 }
+.son-page{
+  height:80vh;
+}
 .headPortrait,.user_message{
   background-color: #ffffff;
 }
@@ -123,14 +126,14 @@ radio .wx-radio-input {
   height: 140rpx;
   border-radius: 140rpx;
   overflow: hidden;
-  background-color: #F6F2EF;
+  background-color: #FffffF;
 }
 .head .head_box .head_box_name{
   width: 100%;
   text-align: center;
   color: #8B8B8B;
   margin-top:20rpx;
-  font-size:32rpx;
+  font-size:22rpx;
 }
 .myData{
 	width: 95%;

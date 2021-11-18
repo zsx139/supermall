@@ -67,6 +67,9 @@
   "usingComponents":{
     "tui-modal": "components/modal/modal",
     "tui-divider": "components/divider/divider",
-    "tui-swipe-action": "components/swipe-action/swipe-action"
+    "tui-swipe-action": "components/swipe-action/swipe-action",
+    "image-cropper" : "components/image-cropper/image-cropper",
+    "tui-tips" : "components/tips/tips"
+
   }
 }

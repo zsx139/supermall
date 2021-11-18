@@ -1,5 +1,6 @@
 // miniprogram/pages/userLogin/login/index.js
 const util = require('../../../util.js')
+let toast;
 Page({
   /**
    * 页面的初始数据
@@ -53,6 +54,7 @@ Page({
    */
   onReady: function () {
     var that = this
+    toast = this.selectComponent("#toast")
     wx.getSystemInfo({
       success: (res) => {
         that.setData({
@@ -125,7 +127,7 @@ Page({
       },
       success:res=>{
         console.log(res)
-        if(res.data.data != undefined){
+        if(res.data.msg != "账号或密码错误"){
           util.showMessage('登陆成功')
           wx.vibrateShort()
           getApp().saveStorageUserToken(res.data.data.token)
@@ -133,11 +135,19 @@ Page({
             url: '/pages/indexs/index/index'
           })
         }else{
+          console.log(res.data.msg)
+          util.showMessage(res.data.msg)
+
+          // let options = {
+          //   msg: res.data.msg,
+          //   duration: 2000
+          // };
+          // toast.showTips(options);
           wx.vibrateLong()
-          this.setData({
-            tuiModalText:res.data.msg,
-            tuiModalShow:true
-          })
+          // this.setData({
+          //   tuiModalText:res.data.msg,
+          //   tuiModalShow:true
+          // })
         }
       }
     })
@@ -168,7 +178,7 @@ Page({
     this.setData({
       name_focus:true
     })
-    // name_focus
+    // wxlogin
   },
    /* 跳转 */
    _navto(e){

@@ -189,18 +189,6 @@ Page({
     var option = {
       active_tag:3
     }
-    util.post({
-      url:'index.php/Smallapp/Index/goodsList?active_tag=3',
-      header:{
-        'whoareyou':1,
-        'VPToken':getApp().getUserToken(),
-        'content-type': 'application/x-www-form-urlencoded' //将请求参数转为form-data格式
-      },
-      // data:option,
-      success:res=>{
-        console.log(res)
-      }
-    })
   },
   modalBtn(e){
     if(e.detail.index==0){

@@ -1,15 +1,4 @@
 <!--miniprogram/pages/my/imgs/index.wxml-->
 <nav-bar navbar-data='{{navbarData}}'></nav-bar>
-<import src="../../../dist/we-cropper.wxml" />
-<view class="imgDisposeBlock">
-  <view class='titleBar'>
-    图片上传
-  </view>
-  <view class='imgDisposeArea'>
-    <template is="we-cropper" data="{{...cropperOpt}}" />
-  </view>
-  <view class='imgDisposeControlLine'>
-    <view class='editBtn btn_primary reelectBtn' bindtap="uploadTap">选择图片</view>
-    <view class='editBtn btn_primary editPerfectBtn' bindtap="getCropperImage">上传</view>
-  </view>
-</view>
+<image-cropper id="image-cropper" limit_move="{{true}}" userid="{{userid}}" disable_rotate="{{true}}" width="{{width}}" height="{{height}}" imgSrc="{{imgSrc}}" bindload="cropperload" bindimageload="loadimage" bindtapcut="clickcut" bindbtnImg="goImg"></image-cropper>
+<tui-modal show="{{modalShow}}" bindclick="modalBtn" title="提示" content="确定裁剪图片吗？"></tui-modal>
