@@ -29,25 +29,24 @@
 /* .particulars_lists view:nth-child(1){
   font-size:28rpx;
 } */
-.particulars_lists view:nth-child(1){
-  width: 100%;
+.particulars_lists .user_password{
+  width: 100% !important;
   /* position: relative; */
 }
 .particulars_lists .tosee{
-  width: 30px !important;
-  height: 100%;
+  width: 50px !important;
+  height: 90%;
   position: absolute;
   top: 0;
   right: 0;
   z-index: 999999;
   display: flex;
   justify-content: center;
-  /* background-color: #ffffff; */
   text-align: center;
   line-height: 40px;
 }
 input{
-  width: 90%;
+  width: 85%;
   color: #ffffff;
   /* height: ; */
 }
@@ -55,4 +54,16 @@ input{
 .particulars_lists{
   height: 40px;
   position: relative;
+}
+.user_password{
+  /* background-color: red; */
+  position: absolute;
+  left: 0;
+  top: 0;
+  text-align: left !important;
+  padding:20rpx;
+  box-sizing: border-box;
+}
+.user_password input{
+  /* background-color: red; */
 }

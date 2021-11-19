@@ -23,14 +23,12 @@
       </view>
     </view>
   <!-- </view> -->
-  
 
   <!-- <view class="swpView" style="height:{{swpHeight}}px;">
-    
   </view> -->
   <!-- 今日推荐 -->
   <view class="toDay clear">
-    <view style="text-align:left;" class="titles clear">
+    <view wx:if="{{dataList.data.banners!=undefined}}" style="text-align:left;" class="titles clear">
       <text class="til_text">今日推荐</text>
       <text bindtap="_navto" data-url="/pages/goods/goods_list/index" class="web-font">更多<text class="iconfont icon-jiantou"></text></text>
     </view>

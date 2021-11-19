@@ -15,9 +15,13 @@
           <view><input bindtap="usName" bindinput="username" focus="{{user_focus}}" placeholder="请输入用户名" class="floatLeft" type="text" value="{{usernameText}}"/></view>
         </view>
         <view class="particulars_lists particulars_border-bom">
-          <view>
-            <view bindtap="tosee" class="tosee"><text class="iconfont {{Type}}"></text></view>
-            <input bindinput="password" focus="{{name_focus}}" placeholder="请输入密码" class="floatLeft" type="{{inpType?'text':'password'}}" value="{{passwordText}}"/>
+          <view wx:if="{{passwordSeeShow==false}}" class="user_password">
+            <view bindtap="tosee" class="tosee"><text class="iconfont icon-biyan1"></text></view>
+            <input bindinput="password" focus="{{name_focus}}" placeholder="请输入密码" class="floatLeft" type="password" value="{{passwordText}}"/>
+          </view>
+          <view wx:if="{{passwordSeeShow}}" class="user_password">
+            <view bindtap="tosee" class="tosee"><text class="iconfont icon-yanjing"></text></view>
+            <input bindinput="password" focus="{{name_focus}}" placeholder="请输入密码" class="floatLeft" type="text" value="{{passwordText}}"/>
           </view>
         </view>
         <view class="loginBtn">

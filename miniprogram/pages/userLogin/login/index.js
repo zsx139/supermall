@@ -26,7 +26,8 @@ Page({
       plain: false
     }],
     tuiModalShow:false,
-    tuiModalText:""
+    tuiModalText:"",
+    passwordSeeShow:false
   },
 
   /**
@@ -159,25 +160,18 @@ Page({
   },
    // 密码是否看见
    tosee(e){
-    var inpType = this.data.inpType==false?true:false
-    if(inpType){
+    if(this.data.passwordSeeShow){
       this.setData({
-        Type:'icon-yanjing',
-        inpType:inpType,
-        passwordText:this.data.passwordText,
-        name_focus:true
+        passwordSeeShow:false,
       })
     }else{
       this.setData({
-        Type:'icon-biyan1',
-        inpType:inpType,
-        passwordText:this.data.passwordText,
-        name_focus:true
+        passwordSeeShow:true,
       })
     }
-    this.setData({
-      name_focus:true
-    })
+    // this.setData({
+    //   name_focus:true
+    // })
     // wxlogin
   },
    /* 跳转 */
