@@ -1,6 +1,7 @@
 <!--miniprogram/pages/userLogin/register/index.wxml-->
 <nav-bar navbar-data='{{navbarData}}'></nav-bar>
-<view class='son-page backgroundColor' style='margin-top: {{height}}px;height:{{contentHeight}}px;'>
+<!-- backgroundColor -->
+<view class='son-page' style='margin-top: {{height}}px;height:{{contentHeight}}px;'>
   <scroll-view scroll-y style='height:100%;'>
     <view style="width:{{windowWidth/2*2}}rpx;height:{{windowWidth/2*2}}rpx;" class="logo">
       <image src="../../../images/logo/vologo2.png"></image>

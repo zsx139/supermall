@@ -391,19 +391,24 @@ Page({
     }
   },
   gainImg(){
-    wx.chooseImage({
-      count: 1,
-      sizeType: ['original', 'compressed'],
-      sourceType: ['camera','album'], // 这要注意，camera掉拍照，album是打开手机相册
-      success: (res)=> {
-        console.log(res.tempFilePaths[0]);
-        // this._navto('/pages/my/imgs/index?imgSrc='+res.tempFilePaths[0])
-        wx.navigateTo({
-          url:'/pages/my/imgs/index?imgSrc='+res.tempFilePaths[0]+'&userid='+this.data.userText.data.ucenter.user_id,
-        })
-        // this.upImg(res.tempFilePaths[0])
-      }
-    });
+    if(getApp().getUserToken() == ''){
+      util.showMessage('请先登录')
+    }else{
+      wx.chooseImage({
+        count: 1,
+        sizeType: ['original', 'compressed'],
+        sourceType: ['camera','album'], // 这要注意，camera掉拍照，album是打开手机相册
+        success: (res)=> {
+          console.log(res.tempFilePaths[0]);
+          // this._navto('/pages/my/imgs/index?imgSrc='+res.tempFilePaths[0])
+          wx.navigateTo({
+            url:'/pages/my/imgs/index?imgSrc='+res.tempFilePaths[0]+'&userid='+this.data.userText.data.ucenter.user_id,
+          })
+          // this.upImg(res.tempFilePaths[0])
+        }
+      });
+    }
+    
   },
   upImg(filePath){
     console.log(this.data.userText.data.ucenter)

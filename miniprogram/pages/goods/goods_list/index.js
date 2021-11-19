@@ -66,9 +66,9 @@ Page({
     goodsMax:{},
     ImgHeight:{},
     brandINto:'',
-
+    modalShow:false,
   },
-  /**
+  /** toStrip
    * 生命周期函数--监听页面初次渲染完成 tabNavTop
    */
   onReady: function () {
@@ -716,18 +716,8 @@ Page({
     },
     toStrip(e){
       if(getApp().getUserToken() == ''){
-        wx.showModal({
-          title: '提示',
-          content: '登录之后才可以操作哦',
-          success (res) {
-            if(res.confirm){
-              wx.navigateTo({
-                url: '/pages/userLogin/login/index'
-              })
-            } else if (res.cancel) {
-              
-            }
-          }
+        this.setData({
+          modalShow:true
         })
       }else{
         this.setData({
@@ -850,5 +840,17 @@ Page({
     this.setData({
       scroll:this.data.brandINto
     })
+  },
+  modalBtn(e){
+    console.log(e.detail.index)
+    if(e.detail.index==0){
+      this.setData({
+        modalShow:false
+      })
+    }else if(e.detail.index==1){
+      wx.navigateTo({
+        url: '/pages/userLogin/login/index'
+      })
+    }
   },
 })

@@ -44,4 +44,6 @@ checkbox{
 .inputSite .contact-btn{
   font-size: 13px;
   padding: 0 14px;
+  width: 100%;
+  background-color: #ffffff;
 }

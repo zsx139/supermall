@@ -266,5 +266,6 @@
           </view>
         </view>
       </view>
+    <tui-modal show="{{modalShow}}" bindclick="modalBtn" title="提示" content="登陆后才能进行此操作"></tui-modal>
   <!-- </movable-area> -->
 </view>

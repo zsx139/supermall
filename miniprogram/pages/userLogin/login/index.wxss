@@ -1,4 +1,8 @@
 /* miniprogram/pages/userLogin/login/index.wxss */
+.son-page{
+  width: 100%;
+  padding-bottom:0;
+}
 .backgroundBox{
   width: 100%;
   height: 100%;
@@ -63,6 +67,9 @@ input{
   text-align: left !important;
   padding:20rpx;
   box-sizing: border-box;
+}
+.user_username{
+  width: 100% !important;
 }
 .user_password input{
   /* background-color: red; */

@@ -1,18 +1,19 @@
 <!--miniprogram/pages/userLogin/login/index.wxml-->
 <!-- tui -->
-<nav-bar navbar-data='{{navbarData}}'></nav-bar>
-<view class='son-page backgroundColor' style='margin-top: {{height}}px;height:{{contentHeight}}px;'>
+<!-- <nav-bar navbar-data='{{navbarData}}'></nav-bar>height:{{contentHeight}}px;padding-top: {{height}}px; -->
+<view class='son-page backgroundColor' style='height:100vh;'>
   <view class="backgroundBox">
     <view bindtap="aaa" class="backgroundImg">
-      <image src="../../../images/background/logoBackground.jpg"></image>
+      <image src="../../../images/background/XingKong.jpg"></image>
     </view>
     <view class="content">
-      <view style="width:{{windowWidth/1.5*2}}rpx;height:{{windowWidth/1.5*2}}rpx;" class="logo">
+      <view style="width:{{windowWidth/1.5*2}}rpx;height:{{windowWidth/1.5*2}}rpx;margin:{{height}}px auto 0 auto;" class="logo">
         <image src="../../../images/logo/vologo.png"></image>
       </view>
       <view class="loginFrom">
         <view class="particulars_lists particulars_border-bom clear">
-          <view><input bindtap="usName" bindinput="username" focus="{{user_focus}}" placeholder="请输入用户名" class="floatLeft" type="text" value="{{usernameText}}"/></view>
+          <view class="user_username">
+            <input bindtap="usName" bindinput="username" focus="{{user_focus}}" placeholder="请输入用户名" class="floatLeft" type="text" value="{{usernameText}}"/></view>
         </view>
         <view class="particulars_lists particulars_border-bom">
           <view wx:if="{{passwordSeeShow==false}}" class="user_password">
