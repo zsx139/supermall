@@ -3,7 +3,7 @@
 <wxs module="tools" src="../function.wxs"></wxs>
 <view class='home-page' style='margin-top:{{height}}px;height:{{clientHeight}}px;box-sizing: border-box;'>
   <view style="top:{{height}}px;" class="search home">
-    <input wx:if="{{zimuKey==false}}" class="inputs" bindinput="bindcall" placeholder="搜索{{zimuIndex}}" value="{{brandname}}" placeholder-class="inp_place" type="text" />
+    <input wx:if="{{zimuKey==false}}" class="inputs" bindinput="bindcall" placeholder="搜索" value="{{brandname}}" placeholder-class="inp_place" type="text" />
     <!-- {{height-30}} -->
     <!-- <text style="top:15px;" wx:if="{{brandname=='' && zimuKey==false}}" class="iconfont icon-chakan"></text> -->
     <view wx:if="{{zimuKey==true}}" class="search_zimu">
@@ -29,7 +29,7 @@
        >{{item.brand_name}}</view>
     </view>
   </scroll-view>
-  <view class="nav" style="margin-top:{{height+20}}px;">
+  <view wx:if="{{brandname == ''}}" class="nav" style="margin-top:{{height+20}}px;">
     <ul>
       <li class="zm" id="nav_item" bindtouchstart="touchstart" data-opt="{{index}}" bindtap="tap"
         bindtouchmove="touchmove" bindtouchend="touchend" wx:for="{{zimu_list}}" wx:key="index">

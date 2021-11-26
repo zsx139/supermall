@@ -84,8 +84,9 @@ function saveCompleted(success, fail, completec, errMsgs) {
   }
  
   wx.showModal({
-    title: `成功${success}项，失败${fail}项`,
-    content: `失败信息:\n${errMsg}，如果全部下载失败 请联系客服`,
+    // title: `成功${success}项，失败${fail}项`,
+    title: `下载成功`,
+    content: `如果相册无商品图片，请联系客服`,
     showCancel: false,
     success(res) {
       if (res.confirm) {
